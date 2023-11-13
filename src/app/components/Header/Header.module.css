@@ -53,9 +53,6 @@
 
 .col2 {
   width: 100%;
-}
-
-.col2 {
   justify-content: flex-start;
   padding-left: .375rem;
 }
