@@ -1,24 +1,60 @@
-import type { ReactNode } from 'react';
 import * as React from 'react';
+import { useState } from 'react';
+import { useTheme as useNextTheme } from 'next-themes';
 
-function ThemeButton({
+import Icons from '@/components/Icons';
+import useModal from '@/hooks/useModal';
+import ThemeSelect from '../Select/ThemeSelect';
+
+export default function ThemeButton({
   className = 'btn-3',
-  onClick,
-  children,
 }: {
   className?: string;
-  onClick?: () => void;
-  children: ReactNode;
 }) {
+  const { theme, setTheme } = useNextTheme();
+  const { Sun, Moon } = Icons;
+  const { showModal } = useModal();
+  const [hasModal, setHasModal] = useState(false);
+
+  const handleClick = () => {
+    setHasModal(true);
+
+    showModal((onClose) => (
+      <ThemeSelect
+        onClick={(e?: React.MouseEvent<HTMLElement>) => {
+          if (!e) {
+            onClose();
+            setHasModal(false);
+            return;
+          }
+          const currentTarget = e?.currentTarget as HTMLButtonElement;
+          const themeValue = currentTarget.dataset.themeValue as string;
+          setTheme(themeValue);
+          onClose();
+          setHasModal(false);
+        }}
+        theme={theme}
+      />
+    ));
+  };
+
   return (
     <button
+      aria-haspopup='listbox'
+      aria-expanded={hasModal}
+      aria-controls='theme-select-listbox'
       className={className}
-      onClick={onClick}
+      onClick={handleClick}
+      title='change theme'
+      id='theme-select-button'
       type='button'
+      disabled={hasModal}
     >
-      {children}
+      {
+        theme === 'light'
+          ? <Sun className='svg-5' />
+          : <Moon className='svg-5' />
+      }
     </button>
   );
 }
-
-export default ThemeButton;

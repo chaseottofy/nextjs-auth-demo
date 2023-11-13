@@ -6,10 +6,12 @@ import { ThemeProvider } from 'next-themes';
 function NextThemeProvider({ children }: { children: React.ReactNode; }) {
   return (
     <ThemeProvider
-      enableSystem={false}
+      themes={['dark', 'light']}
+      storageKey='ot-theme'
       disableTransitionOnChange
       defaultTheme='dark'
       enableColorScheme
+      enableSystem
     >
       {children}
     </ThemeProvider>

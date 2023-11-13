@@ -122,6 +122,12 @@
   border-radius: var(--brhalf);
 }
 
+.btn-icon1:disabled {
+  pointer-events: none;
+  user-select: none;
+  background-color: var(--black2);
+}
+
 .btn-1:not(:disabled):hover,
 .btn-2:not(:disabled):hover,
 .btn-3:not(:disabled):hover,
@@ -130,13 +136,13 @@
   background-color: var(--black2);
 }
 
-.btn-icon1:hover,
+.btn-icon1:not(:disabled):hover,
 .btn-icon1:focus-visible {
   background: var(--black2);
 }
 
 .btn-icon1:active {
-  background: var(--grey10);
+  background: var(--grey8);
 }
 
 .btn-1:not(:disabled):focus-visible,

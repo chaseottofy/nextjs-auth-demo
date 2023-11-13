@@ -3,8 +3,6 @@ import type {
   JSX,
 } from 'react';
 
-// import type { KeyboardEvent } from 'react';
-
 export type Inputs = {
   email: string;
   password: string;

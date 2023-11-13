@@ -167,6 +167,39 @@ const Icons: IconsInterface = {
       <path d='M12 16h.01' />
     </svg>
   ),
+  Sun: (props?: IconProps) => (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='3 3 18 18'
+      stroke='currentColor'
+      {...props}
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+        fill='currentColor'
+        d='M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z'
+      />
+    </svg>
+  ),
+  Check: (props?: IconProps) => (
+    <svg
+      stroke='currentColor'
+      fill='#fff'
+      strokeWidth='0'
+      viewBox='0 0 1024 1024'
+      height='1em'
+      width='1em'
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+    >
+      <path
+        d='M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 0 0-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z'
+      />
+    </svg>
+  ),
 };
 
 export default Icons;

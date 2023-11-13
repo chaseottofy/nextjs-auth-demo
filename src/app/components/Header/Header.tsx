@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useTheme as useNextTheme } from 'next-themes';
 
 import Form from '@/components/Form/Form';
 import ButtonSkeleton from '@/components/UI/Skeletons/ButtonSkeleton';
@@ -14,11 +13,11 @@ import { ThemeButton } from '../UI';
 import styles from './Header.module.css';
 
 export default function Header() {
-  const { Moon, Logo } = Icons;
-  const { theme, setTheme } = useNextTheme();
-  const [mounted, setMounted] = useState(false);
+  const { Logo } = Icons;
   const { showModal } = useModal();
   const [show, setShow] = useState(false);
+
+  const [mounted, setMounted] = useState(false);
 
   const handleToggleForm = () => {
     setShow((prev) => !prev);
@@ -68,16 +67,7 @@ export default function Header() {
             Log in
           </button>
           {mounted
-            ? (
-              <ThemeButton
-                className='btn-icon1'
-                onClick={() => {
-                  setTheme(theme === 'dark' ? 'light' : 'dark');
-                }}
-              >
-                <Moon className='svg-5' />
-              </ThemeButton>
-            )
+            ? <ThemeButton className='btn-icon1' />
             : <ButtonSkeleton className={styles['theme-button--filler']} />}
         </div>
       </div>

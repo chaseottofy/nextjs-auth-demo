@@ -12,6 +12,15 @@ export const ERROR_MESSAGES: { [key: number]: string; } = {
   500: 'Internal Server Error',
 };
 
+export const THEMES = ['light', 'dark', 'system'];
+
+export const THEME_VALUES: { [key: string]: string; } = {
+  light: 'light',
+  dark: 'dark',
+  system: 'dark',
+};
+// export const THEME_VALUES = ['light', 'dark', 'dark'];
+
 export const PASSWORD_REGEX: RegExp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\d!#$%&()*@^])(?!.*[\s/\\])(?!.*["'])(?!.*').{6,20}$/;
 
 export const MAX_INPUT_LENGTHS: { [key: string]: number; } = {

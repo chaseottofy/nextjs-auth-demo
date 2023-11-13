@@ -44,7 +44,7 @@
 
   /* border-radius */
   --br1: 6px;
-  --br2: 8px;
+  --br2: .375rem;
   --br3: 10px;
   --br4: 12px;
   --brhalf: 50%;
@@ -80,6 +80,12 @@
   --bez-3: cubic-bezier(.25, .75, .6, .98);
   --bez-4: cubic-bezier(.25, .75, .6, .98);
   --bez-boxshadow: cubic-bezier(0, 0, 0.2, 1);
+
+  /* ************************************* */
+  /* LIGHT THEME */
+  --secolor1:#076fe7;
+  --sebg1: #f0f7ff;
+
   --grey1: #050505;
   --grey2: #0a0a0a;
   --grey3: #1a1a1a;
@@ -147,6 +153,8 @@
 }
 
 [data-theme="dark"] {
+  --secolor1:#0384d9;
+  --sebg1: #22313c;
   /* grey */
   --grey1: #fafafa;
   --grey2: #f5f5f5;

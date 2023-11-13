@@ -1,3 +1,9 @@
+/**
+ * 
+ * Ensure import rules are toggled for production,
+ * I keep them off for development 
+ * because they don't register manual fixes most of the time
+ */
 module.exports = {
   env: {
     browser: true,
@@ -26,7 +32,6 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
-    // project: path.join(__dirname, 'tsconfig.json'),
   },
   root: true,
   plugins: [
@@ -45,6 +50,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'error',
     '@typescript-eslint/semi': 'warn',
     'import/prefer-default-export': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
     'import/extensions': 'off',
     'jsx-a11y/label-has-associated-control': [
       2,
@@ -61,7 +67,7 @@ module.exports = {
     ],
     'linebreak-style': 'off',
     'no-console': 'off',
-    // 'no-console': [
+    // 'no-console': [ 
     //   'warn',
     //   {
     //     allow: [
@@ -90,41 +96,43 @@ module.exports = {
     'react/jsx-no-undef': [
       2,
       {
-        allowGlobals: true,
+        allowGlobals: false,
       },
     ],
+    'jsx-a11y/no-autofocus': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
-    'simple-import-sort/exports': 'warn',
-    'simple-import-sort/imports': [
-      'warn',
-      {
-        groups: [
-          [
-            '^\\u0000',
-          ],
-          [
-            '^react',
-            '^@?\\w',
-          ],
-          [
-            '^@/',
-            '^\\.\\.(?!/?$)',
-            '^\\.\\./?$',
-          ],
-          [
-            '^\\./(?=.*/)(?!/?$)',
-            '^\\.(?!/?$)',
-            '^\\./?$',
-          ],
-          [
-            '^@?\\w',
-            '^.+\\.s?css$',
-          ],
-        ],
-      },
-    ],
+    'simple-import-sort/exports': 'off',
+    'simple-import-sort/imports': 'off',
+    // 'simple-import-sort/imports': [
+    //   'warn',
+    //   {
+    //     groups: [
+    //       [
+    //         '^\\u0000',
+    //       ],
+    //       [
+    //         '^react',
+    //         '^@?\\w',
+    //       ],
+    //       [
+    //         '^@/',
+    //         '^\\.\\.(?!/?$)',
+    //         '^\\.\\./?$',
+    //       ],
+    //       [
+    //         '^\\./(?=.*/)(?!/?$)',
+    //         '^\\.(?!/?$)',
+    //         '^\\./?$',
+    //       ],
+    //       [
+    //         '^@?\\w',
+    //         '^.+\\.s?css$',
+    //       ],
+    //     ],
+    //   },
+    // ],
     'unicorn/consistent-destructuring': 'off',
     'unicorn/filename-case': 'off',
     'unicorn/no-array-for-each': 'off',
