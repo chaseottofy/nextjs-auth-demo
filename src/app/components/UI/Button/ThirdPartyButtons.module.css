@@ -1,0 +1,47 @@
+.third-party {
+  display: flex;
+  width: 100%;
+  min-width: auto;
+  justify-content: space-around;
+  margin: 1rem 0;
+  gap: var(--p4) var(--p2);
+  padding-bottom: var(--p8);
+}
+
+.third-party button {
+  display: grid;
+  width: 45%;
+  height: 2.25rem;
+  padding: 0;
+  box-shadow: var(--bs-md);
+  font-weight: 400;
+  grid-template-columns: 45% 1fr;
+}
+
+.third-party button span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  line-height: 2rem;
+}
+
+.third-party button span svg {
+  height: 1.375rem;
+  width: 1.375rem;
+}
+
+.button-icon {
+  justify-content: center;
+}
+
+@media screen and (max-width: 380px) {
+  .third-party {
+    flex-direction: column;
+  }
+
+  .third-party button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
