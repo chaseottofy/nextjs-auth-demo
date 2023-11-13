@@ -1,23 +1,9 @@
-import type {
-  HTMLAttributes,
-  JSX,
-} from 'react';
 import * as React from 'react';
 
-// Maybe this needs to be SVGProps<SVGSVGElement>?
-type IconProps = HTMLAttributes<SVGElement>;
-
-interface IconsInterface {
-  [key: string]: (props?: IconProps) => JSX.Element;
-  // Logo: (props?: IconProps) => JSX.Element;
-  // Moon: (props?: IconProps) => JSX.Element;
-  // EyeIcon: (props?: IconProps) => JSX.Element;
-  // EyeIconOff: (props?: IconProps) => JSX.Element;
-  // GithubIcon: (props?: IconProps) => JSX.Element;
-  // GoogleIcon: (props?: IconProps) => JSX.Element;
-  // AlertBadge: (props?: IconProps) => JSX.Element;
-  // ErrorBadge: (props?: IconProps) => JSX.Element;
-}
+import {
+  IconProps,
+  IconsInterface,
+} from '@/models/interfaces';
 
 const Icons: IconsInterface = {
   Logo: (props?: IconProps) => (

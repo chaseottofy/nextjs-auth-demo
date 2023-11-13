@@ -9,7 +9,7 @@ function NextThemeProvider({ children }: { children: React.ReactNode; }) {
       enableSystem={false}
       disableTransitionOnChange
       defaultTheme='dark'
-
+      enableColorScheme
     >
       {children}
     </ThemeProvider>

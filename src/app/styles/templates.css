@@ -322,9 +322,10 @@ it short and sweet since it technically still affects layout.
 
 /* Links <a>
 ===================================== */
-.link-1[data-link-disabled="true"] {
-  pointer-events: none;
-  user-select: none;
+.link-1[data-link-disabled="true"],
+.link-2[data-link-disabled="true"] {
+  pointer-events: none !important;
+  user-select: none !important;
   opacity: .6;
 }
 
@@ -335,6 +336,16 @@ it short and sweet since it technically still affects layout.
 
 .link-2:hover {
   background-color: var(--grey9);
+}
+
+.link-1:not(:disabled):active,
+.link-2:not(:disabled):active {
+  background-color: var(--grey10);
+}
+
+.link-1:not(:disabled):focus-visible,
+.link-2:not(:disabled):focus-visible {
+  background-color: var(--grey10);
 }
 
 /* SVG

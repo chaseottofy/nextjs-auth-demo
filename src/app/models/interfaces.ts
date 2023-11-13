@@ -1,3 +1,10 @@
+import type {
+  HTMLAttributes,
+  JSX,
+} from 'react';
+
+// import type { KeyboardEvent } from 'react';
+
 export type Inputs = {
   email: string;
   password: string;
@@ -35,3 +42,15 @@ export interface ModalContextProps {
 export interface ModalProviderProps {
   children: React.ReactNode;
 }
+
+export interface FormProps {
+  onClose: () => void;
+}
+
+export type IconProps = HTMLAttributes<SVGElement>;
+
+export interface IconsInterface {
+  [key: string]: (props?: IconProps) => JSX.Element;
+}
+
+export type TimeoutId = ReturnType<typeof setTimeout>;

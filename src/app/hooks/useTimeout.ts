@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-type TimeoutId = ReturnType<typeof setTimeout>;
+import type { TimeoutId } from '@/models/interfaces';
 
 const useTimeout = (callback: () => void, delay: number): void => {
   const savedCallback = useRef(callback);

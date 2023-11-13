@@ -50,6 +50,7 @@ export default function Header() {
                   className={`${styles['nav-link']} link-1`}
                   href='dashbaord'
                   data-link-disabled
+                  tabIndex={-1}
                 >
                   Dashboard
                 </Link>

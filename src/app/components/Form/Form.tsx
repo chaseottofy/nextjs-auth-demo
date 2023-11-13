@@ -8,7 +8,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { MAX_TIMEOUT } from '@/data/constants';
 import { useClickOutside } from '@/hooks/index';
 import { schema, User } from '@/lib/schema';
-import { Warning } from '@/models/interfaces';
+import {
+  FormProps,
+  Warning,
+} from '@/models/interfaces';
 import {
   determineInputAlertProps,
   handleKeyDownPassword,
@@ -27,10 +30,6 @@ import {
 } from '../UI';
 
 import styles from './Form.module.css';
-
-interface FormProps {
-  onClose: () => void;
-}
 
 export default function Form({ onClose }: FormProps) {
   const [checkState, setCheckState] = useState<boolean>(false);
@@ -61,7 +60,6 @@ export default function Form({ onClose }: FormProps) {
         reset,
       );
     }
-
     onClose();
   };
 

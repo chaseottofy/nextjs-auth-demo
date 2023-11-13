@@ -30,6 +30,7 @@
   "scripts": {
     "api": "json-server api/db.json --port 4001",
     "build": "next build",
+    "preview": "next start",
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

@@ -6,7 +6,9 @@ import Main from '@/components/Main/Main';
 
 function Home() {
   return (
-    <Main />
+    <Main>
+      <h1>Home</h1>
+    </Main>
   );
 }
 
