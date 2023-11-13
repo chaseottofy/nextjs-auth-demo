@@ -1,18 +1,18 @@
 module.exports = {
   env: {
     browser: true,
-    node: true,
+    'es2021': true,
   },
   extends: [
-    'next',
+    'eslint:recommended',
+    'plugin:react/recommended',
     'next/core-web-vitals',
+    'next',
     'plugin:@typescript-eslint/strict',
     'plugin:@typescript-eslint/eslint-recommended',
     'airbnb',
     'airbnb-typescript/base',
-    'eslint:recommended',
     'plugin:jsx-a11y/strict',
-    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
@@ -25,7 +25,8 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: path.join(__dirname, 'tsconfig.json'),
+    project: './tsconfig.json',
+    // project: path.join(__dirname, 'tsconfig.json'),
   },
   root: true,
   plugins: [
@@ -43,6 +44,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-use-before-define': 'error',
     '@typescript-eslint/semi': 'warn',
+    'import/prefer-default-export': 'off',
     'import/extensions': 'off',
     'jsx-a11y/label-has-associated-control': [
       2,
@@ -58,15 +60,16 @@ module.exports = {
       'prefer-single',
     ],
     'linebreak-style': 'off',
-    'no-console': [
-      'warn',
-      {
-        allow: [
-          'warn',
-          'error',
-        ],
-      },
-    ],
+    'no-console': 'off',
+    // 'no-console': [
+    //   'warn',
+    //   {
+    //     allow: [
+    //       'warn',
+    //       'error',
+    //     ],
+    //   },
+    // ],
     'no-tabs': [
       'error',
       {

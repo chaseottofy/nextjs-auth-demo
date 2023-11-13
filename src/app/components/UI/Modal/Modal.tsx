@@ -1,16 +1,14 @@
 'use client';
 
-import * as React from 'react';
+import React from 'react';
 
-import { ModalProps } from '@/models/interfaces';
+import type { ModalProps } from '@/models/interfaces';
 
 import styles from './Modal.module.css';
 
-const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  content,
-  onClose,
-}) => {
+export default function Modal({
+  isOpen, content, onClose,
+}: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -18,6 +16,4 @@ const Modal: React.FC<ModalProps> = ({
       {content(onClose)}
     </div>
   );
-};
-
-export default Modal;
+}

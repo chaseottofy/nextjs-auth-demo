@@ -1,52 +1,40 @@
 'use client';
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-} from 'react';
-
-import {
-  ModalContextProps,
-  ModalProps,
-  ModalContent,
-  ModalProviderProps,
-} from '@/models/interfaces';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import Modal from '@/components/UI/Modal/Modal';
+import { ModalContext } from '@/context/modalContext';
+import { ModalContent, ModalProps } from '@/models/interfaces';
 
-const ModalContext = createContext<ModalContextProps | undefined>(undefined);
-
-export const useModal = () => {
-  const context = useContext(ModalContext);
-  if (!context) {
-    throw new Error('useModal must be used within a ModalProvider');
-  }
-  return context;
-};
-
-// }: React.PropsWithChildren<{}>) => {
-export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
+export default function ModalProvider({
+  children,
+}: React.PropsWithChildren<object>) {
   const [modalProps, setModalProps] = useState<ModalProps | null>(null);
 
-  const showModal = (content: ModalContent) => {
-    setModalProps({ isOpen: true, content, onClose: hideModal });
-  };
+  const hideModal = useCallback(() => {
+    setModalProps(null);
+  }, []);
 
-  const updateModal = (content: ModalContent) => {
+  const showModal = useCallback((content: ModalContent) => {
+    setModalProps({ isOpen: true, content, onClose: hideModal });
+  }, [hideModal]);
+
+  const updateModal = useCallback((content: ModalContent) => {
     if (modalProps) {
       setModalProps({ ...modalProps, content });
     }
-  };
+  }, [modalProps]);
 
-  const hideModal = () => {
-    setModalProps(null);
-  };
+  const value = useMemo(() => ({
+    showModal,
+    updateModal,
+    hideModal,
+  }), [showModal, updateModal, hideModal]);
 
   return (
-    <ModalContext.Provider value={{ showModal, updateModal, hideModal }}>
+    <ModalContext.Provider value={value}>
       {children}
       {modalProps && <Modal {...modalProps} />}
     </ModalContext.Provider>
   );
-};
+}

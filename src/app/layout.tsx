@@ -3,8 +3,8 @@ import localFont from 'next/font/local';
 
 import Header from '@/components/Header/Header';
 
+import ModalProvider from './providers/modalProvider';
 import NextThemeProvider from './providers/themeProvider';
-import { ModalProvider } from './providers/modalProvider';
 
 import '@/styles/sanitize.css';
 import '@/styles/root.css';

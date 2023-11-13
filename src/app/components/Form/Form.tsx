@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { MAX_TIMEOUT } from '@/data/constants';
+import { useClickOutside } from '@/hooks/index';
 import { schema, User } from '@/lib/schema';
 import { Warning } from '@/models/interfaces';
 import {
@@ -25,21 +26,19 @@ import {
   ThirdPartyButtons,
 } from '../UI';
 
-import { useClickOutside } from '@/hooks/index';
-
 import styles from './Form.module.css';
 
 interface FormProps {
   onClose: () => void;
 }
 
-const Form: React.FC<FormProps> = ({ onClose }) => {
+export default function Form({ onClose }: FormProps) {
   const [checkState, setCheckState] = useState<boolean>(false);
   const [emailWarning, setEmailWarning] = useState<Warning>({ active: false, message: '' });
   const [userAlreadyExists, setUserAlreadyExists] = useState<string[]>([]);
   const [passWarning, setPassWarning] = useState<Warning>({ active: false, message: '' });
   const [revealPass, setRevealPass] = useState<boolean>(false);
-  const modalRef = useClickOutside(onClose) as React.MutableRefObject<HTMLFormElement>;
+  const modalRef = useClickOutside(onClose) as React.MutableRefObject<HTMLDivElement>;
 
   const {
     register,
@@ -53,7 +52,6 @@ const Form: React.FC<FormProps> = ({ onClose }) => {
   const onSubmit = async (data: User, e: React.FormEvent<HTMLFormElement>) => {
     const canSubmit = onSubmitPreCheck(data, e, userAlreadyExists, setEmailWarning);
     if (canSubmit) {
-
       await onSubmitPostCheck(
         data,
         setEmailWarning,
@@ -68,11 +66,13 @@ const Form: React.FC<FormProps> = ({ onClose }) => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      ref={modalRef}
+      className={styles.wrapper}
+      data-is-submitting={isSubmitting}
+    >
       {isSubmitting && <Spinner timeoutVal={MAX_TIMEOUT} />}
       <form
-        ref={modalRef}
-        data-is-submitting={isSubmitting}
         onSubmit={(e) => {
           if (!isValid || isSubmitting) return;
           e.preventDefault();
@@ -171,6 +171,4 @@ const Form: React.FC<FormProps> = ({ onClose }) => {
       </form>
     </div>
   );
-};
-
-export default Form;
+}

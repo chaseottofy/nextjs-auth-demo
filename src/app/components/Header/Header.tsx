@@ -1,25 +1,35 @@
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useTheme as useNextTheme } from 'next-themes';
 
+import Form from '@/components/Form/Form';
+import ButtonSkeleton from '@/components/UI/Skeletons/ButtonSkeleton';
+import useModal from '@/hooks/useModal';
 import Icons from '../Icons';
 import { ThemeButton } from '../UI';
 
 import styles from './Header.module.css';
 
-import { useModal } from '@/providers/modalProvider';
-
-import Form from '@/components/Form/Form';
-
-const Header: React.FC = () => {
+export default function Header() {
   const { Moon, Logo } = Icons;
   const { theme, setTheme } = useNextTheme();
   const [mounted, setMounted] = useState(false);
   const { showModal } = useModal();
   const [show, setShow] = useState(false);
+
+  const handleToggleForm = () => {
+    setShow((prev) => !prev);
+    showModal((onClose) => (
+      <Form onClose={() => {
+        setShow(false);
+        onClose();
+      }}
+      />
+    ));
+  };
 
   useEffect(() => setMounted(true), []);
 
@@ -39,7 +49,7 @@ const Header: React.FC = () => {
                 <Link
                   className={`${styles['nav-link']} link-1`}
                   href='dashbaord'
-                  data-link-disabled={true}
+                  data-link-disabled
                 >
                   Dashboard
                 </Link>
@@ -51,36 +61,25 @@ const Header: React.FC = () => {
           <button
             className={`${styles['log-in--btn']} btn-3`}
             disabled={show}
-            onClick={() => {
-              setShow((prev) => !prev);
-              showModal((onClose) => (
-                <Form onClose={() => {
-                  setShow(false);
-                  onClose();
-                }} />
-              ));
-            }}
+            type='button'
+            onClick={handleToggleForm}
           >
             Log in
           </button>
-          {
-            !mounted
-              ? <button className={styles['theme-button--filler']} />
-              : (
-                <ThemeButton
-                  className='btn-icon1'
-                  onClick={() => {
-                    setTheme(theme === 'dark' ? 'light' : 'dark');
-                  }}
-                >
-                  <Moon className='svg-5' />
-                </ThemeButton>
-              )
-          }
+          {mounted
+            ? (
+              <ThemeButton
+                className='btn-icon1'
+                onClick={() => {
+                  setTheme(theme === 'dark' ? 'light' : 'dark');
+                }}
+              >
+                <Moon className='svg-5' />
+              </ThemeButton>
+            )
+            : <ButtonSkeleton className={styles['theme-button--filler']} />}
         </div>
       </div>
     </header>
   );
-};
-
-export default Header;
+}

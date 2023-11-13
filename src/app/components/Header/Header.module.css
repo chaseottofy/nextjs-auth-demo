@@ -101,6 +101,7 @@
 
 .theme-button--filler {
   width: 2rem;
+  border-radius: 50%;
 }
 
 .logo:hover {

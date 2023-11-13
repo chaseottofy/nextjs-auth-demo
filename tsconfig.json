@@ -20,20 +20,22 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "jsx": "preserve",
-    // "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "baseUrl": "./src/app/",
+    "baseUrl": "src/app/",
     "paths": {
       "@/assets/*": [
         "assets/*"
       ],
       "@/components/*": [
         "components/*"
+      ],
+       "@/context/*": [
+        "context/*"
       ],
       "@/data/*": [
         "data/*"

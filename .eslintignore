@@ -6,3 +6,5 @@ test/
 posts/
 scripts/
 components/MDX/MDX-components.tsx
+next.config.js
+.eslintrc.js
