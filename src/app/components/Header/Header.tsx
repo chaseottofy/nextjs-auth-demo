@@ -57,6 +57,7 @@ export default function Header() {
             </ul>
           </nav>
         </div>
+
         <div className={styles.col3}>
           <button
             className={`${styles['log-in--btn']} btn-3`}

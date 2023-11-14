@@ -243,8 +243,8 @@ svg {
 svg {
   pointer-events: none;
   user-select: none;
-  min-width: 1rem;
-  min-height: 1rem; 
+  min-width: .875rem;
+  min-height: .875rem;
 }
 
 input::placeholder,

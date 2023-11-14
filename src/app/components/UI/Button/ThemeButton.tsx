@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { useState } from 'react';
+
 import { useTheme as useNextTheme } from 'next-themes';
 
 import Icons from '@/components/Icons';
 import useModal from '@/hooks/useModal';
+
 import ThemeSelect from '../Select/ThemeSelect';
 
-export default function ThemeButton({
-  className = 'btn-3',
-}: {
-  className?: string;
-}) {
+export default function ThemeButton({ className = 'btn-3' }: { className?: string; }) {
   const { theme, setTheme } = useNextTheme();
   const { Sun, Moon } = Icons;
   const { showModal } = useModal();
@@ -21,19 +19,22 @@ export default function ThemeButton({
 
     showModal((onClose) => (
       <ThemeSelect
+        theme={theme}
+        setTheme={setTheme}
         onClick={(e?: React.MouseEvent<HTMLElement>) => {
+          // event was triggered by outside click or escape key, no ref
           if (!e) {
+            console.log(true);
             onClose();
             setHasModal(false);
             return;
           }
-          const currentTarget = e?.currentTarget as HTMLButtonElement;
-          const themeValue = currentTarget.dataset.themeValue as string;
-          setTheme(themeValue);
+
+          const currentTarget = e?.currentTarget as HTMLLIElement;
+          setTheme(currentTarget.dataset.themeValue as 'light' | 'dark');
           onClose();
           setHasModal(false);
         }}
-        theme={theme}
       />
     ));
   };

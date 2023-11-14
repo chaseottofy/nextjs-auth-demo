@@ -4,7 +4,6 @@ export const FORM_KEYS: string[] = ['email', 'password', 'remember'];
 
 export const FORM_LENGTH: number = FORM_KEYS.length;
 
-// export const BASE_URL = 'https://reqres.in/api';
 export const BASE_URL = 'http://localhost:4001/users/';
 
 export const ERROR_MESSAGES: { [key: number]: string; } = {
@@ -19,7 +18,6 @@ export const THEME_VALUES: { [key: string]: string; } = {
   dark: 'dark',
   system: 'dark',
 };
-// export const THEME_VALUES = ['light', 'dark', 'dark'];
 
 export const PASSWORD_REGEX: RegExp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\d!#$%&()*@^])(?!.*[\s/\\])(?!.*["'])(?!.*').{6,20}$/;
 

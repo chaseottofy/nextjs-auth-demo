@@ -125,7 +125,11 @@
 .btn-icon1:disabled {
   pointer-events: none;
   user-select: none;
-  background-color: var(--black2);
+  background-color: var(--grey4);
+}
+
+.btn-icon1:disabled svg {
+  color: var(--black2) !important;
 }
 
 .btn-1:not(:disabled):hover,
@@ -148,12 +152,14 @@
 .btn-1:not(:disabled):focus-visible,
 .btn-4:not(:disabled):focus-visible {
   border-color: var(--grey9);
+  /* outline: 1px dotted var(--white2); */
   outline: 2px solid var(--grey8) !important;
 }
 
 .btn-2:not(:disabled):focus-visible,
 .btn-3:not(:disabled):focus-visible {
-  outline: 2px solid var(--grey8) !important;
+  /* outline: 2px solid var(--grey8) !important; */
+  outline: 1.5px dotted var(--white1);
 }
 
 .btn-1:not(:disabled):active,
@@ -386,6 +392,11 @@ it short and sweet since it technically still affects layout.
 .svg-5 {
   width: 1rem;
   height: 1rem;
+}
+
+.svg-6 {
+  width: .875rem;
+  height: .875rem;
 }
 
 /* TEXT

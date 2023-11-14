@@ -10,11 +10,13 @@ import ThemeSelectItem from './ThemeSelectItem';
 import styles from './ThemeSelect.module.css';
 
 export default function ThemeSelect({
-  onClick,
   theme,
+  setTheme,
+  onClick,
 }: {
-  onClick: (e?: React.MouseEvent<HTMLElement>) => void;
   theme?: string;
+  setTheme?: (theme: string) => void;
+  onClick: (e?: React.MouseEvent<HTMLElement>) => void;
 }) {
   const { Check } = Icons;
   const [activeItem, setActiveItem] = useState(theme === 'light' ? 0 : 1);
@@ -26,14 +28,14 @@ export default function ThemeSelect({
 
   return (
     <ul
-      className={styles.container}
-      ref={modalRef}
-      role='listbox'
-      id='theme-select-listbox'
-      tabIndex={0}
       aria-orientation='vertical'
       aria-label='Theme Select'
       aria-labelledby='theme-select-button'
+      className={styles.container}
+      id='theme-select-listbox'
+      ref={modalRef}
+      role='listbox'
+      tabIndex={0}
       onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
         const { key } = e;
         setActiveItem((prev) => {
@@ -46,9 +48,9 @@ export default function ThemeSelect({
           return prev;
         });
 
-        if (key === 'Enter') {
-          const currentChild = e.currentTarget?.children[activeItem] as HTMLLIElement;
-          currentChild.click();
+        if (key === 'Enter' && setTheme) {
+          setTheme(Object.keys(THEME_VALUES)[activeItem]);
+          onClick();
         }
       }}
     >
@@ -66,7 +68,7 @@ export default function ThemeSelect({
             }}
           >
             {item}
-            {theme === item && <Check className='svg-5' />}
+            {theme === item && <Check className='svg-6' />}
           </ThemeSelectItem>
         ))
       }

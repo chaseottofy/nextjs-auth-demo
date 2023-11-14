@@ -17,14 +17,15 @@ export default function ThemeSelectItem({
 }) {
   return (
     <li
+      aria-selected={active}
       data-theme-value={value}
       data-theme-active={active}
       data-active-tab={activeItem}
-      role='option'
-      aria-selected={active}
       id={`theme-select-item-${index}`}
       onClick={onClick}
       tabIndex={-1}
+      title={value}
+      role='option'
     >
       {children}
     </li>
