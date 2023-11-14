@@ -6,6 +6,8 @@
   "keywords": [
     "ottofy",
     "chaseottofy",
+    "nextjs",
+    "nextjs-auth",
     "react",
     "react-form",
     "typescript",
@@ -13,7 +15,6 @@
     "react-hook-form-zod",
     "zod",
     "api",
-    "json-server",
     "vite"
   ],
   "homepage": "https://github.com/chaseottofy/nextjs-auth-demo#readme",
@@ -32,6 +33,7 @@
     "build": "next build",
     "preview": "next start",
     "dev": "next dev",
+    "dep": "npx depcheck",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "sort": "npx sort-package-json",
@@ -41,6 +43,10 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
+    "@tanstack/react-query": "^4.36.1",
+    "@trpc/client": "^10.43.3",
+    "@trpc/react-query": "^10.43.3",
+    "@trpc/server": "^10.43.3",
     "next": "14.0.1",
     "next-themes": "^0.2.1",
     "nodemailer": "^6.9.7",
@@ -73,7 +79,6 @@
     "eslint-plugin-unicorn": "^49.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "json-server": "^0.17.4",
     "postcss": "^8.4.31",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.1.0",

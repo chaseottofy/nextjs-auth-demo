@@ -26,10 +26,10 @@
         "name": "next"
       }
     ],
-    "baseUrl": "src/app/",
+    "baseUrl": "src/",
     "paths": {
       "@/assets/*": [
-        "assets/*"
+        "app/assets/*"
       ],
       "@/components/*": [
         "components/*"
@@ -46,11 +46,11 @@
       "@/lib/*": [
         "lib/*"
       ],
-      "@/providers/*": [
-        "providers/*"
-      ],
       "@/models/*": [
         "models/*"
+      ],
+      "@/providers/*": [
+        "providers/*"
       ],
       "@/styles/*": [
         "styles/*"
