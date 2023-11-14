@@ -1,8 +1,10 @@
 .container {
   position: absolute;
   top:4px;
-  right: 2rem;
-  min-width: 92px;
+  right: 1rem;
+  min-width: 105px;
+
+  /* min-width: 92px; */
   height: auto;
   background-color: var(--black3);
   border-radius: var(--br2);
@@ -20,10 +22,8 @@
 
 .container li {
   text-transform: capitalize;
-
-  /* font-weight: 500; */
   padding: .375rem .5rem;
-  min-height: 1.875rem;
+  min-height: 2rem;
   white-space: nowrap;
   cursor: pointer;
   position: relative;

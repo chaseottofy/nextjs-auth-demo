@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 
-import Icons from '@/components/Icons';
+import Icons from '@/components/Icons/Icons';
 import { THEMES } from '@/data/constants';
 import { useClickOutside } from '@/hooks/index';
 import { mod } from '@/utils/index';

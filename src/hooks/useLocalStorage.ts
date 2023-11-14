@@ -17,7 +17,7 @@ const useLocalStorage = <T>(key: string, initialValue: T): [
 
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      return item ? JSON.parse(item) as T : initialValue;
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error);
       return initialValue;
@@ -48,7 +48,7 @@ const useLocalStorage = <T>(key: string, initialValue: T): [
     const handleStorageChange = (event: StorageEvent) => {
       if (event.key === key) {
         try {
-          setStoredValue(event.newValue ? JSON.parse(event.newValue) : initialValue);
+          setStoredValue(event.newValue ? JSON.parse(event.newValue) as T : initialValue);
         } catch (error) {
           console.warn(`Error parsing localStorage key “${key}” change:`, error);
         }

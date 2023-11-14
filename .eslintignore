@@ -7,5 +7,6 @@ posts
 scripts
 next.config.js
 .next
-.eslintrc.js
+.eslintrc.cjs
 stylelint.config.cjs
+temp

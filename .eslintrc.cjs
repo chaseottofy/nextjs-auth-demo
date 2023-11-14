@@ -1,8 +1,5 @@
 /**
- * 
- * Ensure import rules are toggled for production,
- * I keep them off for development 
- * because they don't register manual fixes most of the time
+ * check import rules, I toggle them on/off when developing
  */
 module.exports = {
   env: {
@@ -14,7 +11,9 @@ module.exports = {
     'plugin:react/recommended',
     'next/core-web-vitals',
     'next',
+    'airbnb-typescript',
     'plugin:@typescript-eslint/strict',
+    'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:jsx-a11y/strict',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
@@ -29,6 +28,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   root: true,
   plugins: [
@@ -80,7 +80,12 @@ module.exports = {
       },
     ],
     'no-trailing-spaces': 'warn',
-    'react-refresh/only-export-components': 'warn',
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        'allowExportNames': ['metadata'],
+      }
+    ],
     'react/jsx-filename-extension': [
       'warn',
       {

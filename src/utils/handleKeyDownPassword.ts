@@ -14,18 +14,25 @@ const handleKeyDownPassword = (
 ) => {
   const { key } = e;
   if (key === 'Backspace') return;
+
   if (getValues('password').length >= MAX_PASSWORD_LENGTH) {
     setPassWarning({
       active: true,
       message: `Max password length is ${MAX_PASSWORD_LENGTH}`,
     });
+
     if (key === 'Backspace') {
       setRevealPassword(false);
       setPassWarning({ active: false, message: '' });
     } else {
       e.preventDefault();
     }
+
+    setTimeout(() => {
+      setPassWarning({ active: false, message: '' });
+    }, 2_000);
   }
+
   if (INVALID_CHARS[key]) {
     e.preventDefault();
     setPassWarning({

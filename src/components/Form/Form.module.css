@@ -25,7 +25,7 @@
 .wrapper::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  background: transparent;
+  background-color: transparent;
 }
 
 .wrapper::-webkit-scrollbar-thumb {
@@ -84,7 +84,7 @@
   min-width: 100%;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
   margin: 0 auto;
   margin-bottom: .25rem;
 }
@@ -141,16 +141,6 @@
   width: 20%;
   height: 1px;
   background-color: var(--grey9);
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0
-  }
-
-  100% {
-    background-position: -200% 0
-  }
 }
 
 @keyframes fade-in {

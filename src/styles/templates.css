@@ -88,7 +88,6 @@ it up a lot.
 .btn-3,
 .btn-4 {
   font-weight: 400;
-  line-height: 1rem;
 }
 
 .btn-2 {
@@ -98,7 +97,7 @@ it up a lot.
 }
 
 .btn-3 {
-  height: 2.25rem;
+  height: 2.125rem;
   background-color: transparent;
 }
 
@@ -130,7 +129,7 @@ it up a lot.
 }
 
 .btn-icon1:active {
-  background: var(--grey8);
+  background-color: var(--grey8);
 }
 
 .btn-icon1:disabled {
@@ -150,7 +149,7 @@ it up a lot.
 
 .btn-icon1:not(:disabled):focus-visible,
 .btn-icon1:not(:disabled):hover {
-  background: var(--black2);
+  background-color: var(--black2);
 }
 
 .btn-1:not(:disabled):focus-visible,
@@ -189,7 +188,7 @@ it up a lot.
 .input-1 {
   width: 100%;
   min-width: 100%;
-  height: 2.5rem;
+  height: 2.25rem;
   background-color: var(--black1);
   font-size: 0.8rem;
   outline: 2px solid transparent;

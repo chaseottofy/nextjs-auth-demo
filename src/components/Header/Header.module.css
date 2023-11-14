@@ -15,6 +15,12 @@
   background-color: var(--black1);
 }
 
+.header a,
+.header button {
+  height: var(--half-header) !important;
+  min-height: var(--half-header) !important;
+}
+
 .content {
   display: flex;
   width: 100%;
@@ -38,23 +44,9 @@
   padding-left: .375rem;
 }
 
-.logo {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: var(--brhalf);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo svg {
-  fill: #09090b;
-}
-
 .col2 {
   width: 100%;
   justify-content: flex-start;
-  padding-left: .375rem;
 }
 
 .col3 {
@@ -77,37 +69,62 @@
 
 .nav-link {
   color: var(--grey4);
-  padding: .375rem .75rem;
-  margin-right: .75rem;
-  font-size: .825rem;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--black1);
+  margin-left: var(--p5);
+  font-size: 0.825rem;
+  font-weight: 400;
+  padding: 0 var(--p2);
+  position: relative;
   border: 1px solid transparent;
 }
 
-.col3 button {
-  margin-right: 1rem;
+.logo,
+.theme-btn--filler,
+.theme-btn--header {
+  width: var(--half-header) !important;
+  border-radius: var(--brhalf) !important;
+  border: none !important;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .log-in--btn {
-  margin-right: 1.75rem !important;
+  margin-right: var(--p6);
   border: 1px solid transparent !important;
-  height: 1.875rem;
   color: var(--grey4) !important;
   box-shadow: var(--bs3);
 }
 
-.theme-button--filler {
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 80%;
+  height: 1px;
+  background-color: transparent;
+  transform: scaleX(0);
+  transition-timing-function: var(--bez-4);
+  transition-duration: 150ms;
+  transition-property: background-color, transform;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  background-color: var(--grey4);
 }
 
 .logo:hover {
   filter: invert(1);
   transition: all .2s ease-in-out;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
 }
 
 .log-in--btn:disabled {
@@ -119,4 +136,3 @@
   border-color: var(--grey5) !important;
   background-color: var(--black1) !important;
 }
-

@@ -1,15 +1,25 @@
-'use client';
+// 'use client';
 
 import * as React from 'react';
 
-import Main from '@/components/Main/Main';
+import type { Metadata } from 'next';
+import * as metaShared from './MetaResolve';
 
-function Home() {
+import Main from '@/components/Main/Main';
+import UserList from '@/components/UserList';
+
+export const metadata: Metadata = {
+  title: 'next app',
+  ...metaShared,
+};
+
+export default function Home() {
   return (
     <Main>
-      <h1>Home</h1>
+      <h1>
+        JUST TESTING ROUTER, LOGIN NOT IMPLEMENTED YET
+      </h1>
+      <UserList />
     </Main>
   );
 }
-
-export default Home;

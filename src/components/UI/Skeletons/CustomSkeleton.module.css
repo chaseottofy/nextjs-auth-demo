@@ -1,0 +1,16 @@
+.custom-skeleton {
+  position: relative;
+  animation: skeleton-loading 2s ease-in-out infinite;
+  background-color: transparent !important;
+  background-image: var(--linear2) !important;
+  background-size: 400% 100%;
+  color: transparent !important;
+  pointer-events: none;
+  user-select: none;
+}
+
+.custom-skeleton[data-is-transparent="true"] {
+  background-color: transparent !important;
+  background-image: none !important;
+  animation: none !important;
+}

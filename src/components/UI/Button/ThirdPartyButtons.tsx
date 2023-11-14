@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Icons from '@/components/Icons';
+import Icons from '@/components/Icons/Icons';
 
 import styles from './ThirdPartyButtons.module.css';
 

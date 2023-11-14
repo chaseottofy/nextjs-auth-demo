@@ -11,8 +11,6 @@
 import { BASE_URL, ERROR_MESSAGES } from '@/data/constants';
 import { UserInterface } from '@/models/interfaces';
 
-import customError from './customError';
-
 export interface Response {
   ok: boolean;
   status: number;
@@ -24,12 +22,12 @@ export interface Response {
 export interface HandleApiInterface {
   get(): Promise<UserInterface[]> | Promise<[]>;
   put(user: UserInterface): Promise<UserInterface[]> | Promise<[]>;
-  post(user: UserInterface): void;
+  post?(user: UserInterface): void;
 }
 
-const checkStatus = async (response: Response): Promise<Response> => {
+const checkStatus = (response: Response): Promise<Response> => {
   if (response.ok) {
-    return response;
+    return Promise.resolve(response);
   }
 
   const httpErrorInfo: { status: number, statusText: string, url: string; } = {
@@ -42,12 +40,12 @@ const checkStatus = async (response: Response): Promise<Response> => {
   const statusMessage: string | undefined = ERROR_MESSAGES[httpErrorInfo?.status];
 
   try {
-    throw customError(statusMessage || httpErrorInfo.statusText);
+    throw new Error(statusMessage || httpErrorInfo.statusText);
   } catch (error) {
-    console.warn(`log client error: ${error}`);
+    console.error(error);
   }
 
-  return response;
+  return Promise.reject(new Error(statusMessage || httpErrorInfo.statusText));
 };
 
 const handleApi: HandleApiInterface = {
@@ -58,9 +56,12 @@ const handleApi: HandleApiInterface = {
       const response = await fetch(`${BASE_URL}`);
       const response1 = await checkStatus(response);
       const data = await (response1 ? response1.json() : []);
+      if (!data) {
+        throw new Error('No data found');
+      }
       return data;
     } catch (error) {
-      console.warn(`log client error: ${error}`);
+      console.error(error);
       return [];
     }
   },
@@ -76,34 +77,35 @@ const handleApi: HandleApiInterface = {
       });
       const response1 = await checkStatus(response);
       const data = await (response1 ? response1.json() : []);
+      if (!data) {
+        throw new Error('No data found');
+      }
       console.warn(data);
       return data;
     } catch (error) {
-      console.warn(`log client error: ${error}`);
+      console.error(error);
       return [];
-    } finally {
-      console.warn(`log client finally: ${JSON.stringify(user)}`);
     }
   },
 
-  async post(user: UserInterface) {
-    try {
-      const response = await fetch(`${BASE_URL}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-      const responseMessage = await checkStatus(response);
-      return responseMessage;
-    } catch (error) {
-      console.warn(`log client error: ${error}`);
-      return [];
-    } finally {
-      console.warn(`log client finally: ${JSON.stringify(user)}`);
-    }
-  },
+  // async post(user: UserInterface) {
+  //   try {
+  //     const response = await fetch(`${BASE_URL}`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(user),
+  //     });
+  //     const responseMessage = await checkStatus(response);
+  //     return responseMessage;
+  //   } catch (error) {
+  //     console.warn(`log client error: ${error}`);
+  //     return [];
+  //   } finally {
+  //     console.warn(`log client finally: ${JSON.stringify(user)}`);
+  //   }
+  // },
 };
 
 export default handleApi;

@@ -41,27 +41,11 @@ export default function Form({ onClose }: FormProps) {
 
   const {
     register,
-    handleSubmit,
     reset,
     getValues,
     setValue,
     formState: { errors, isSubmitting, isValid },
   } = useForm<User>({ resolver: zodResolver(schema), mode: 'all' });
-
-  const onSubmit = async (data: User, e: React.FormEvent<HTMLFormElement>) => {
-    const canSubmit = onSubmitPreCheck(data, e, userAlreadyExists, setEmailWarning);
-    if (canSubmit) {
-      await onSubmitPostCheck(
-        data,
-        setEmailWarning,
-        setUserAlreadyExists,
-        isValid,
-        isSubmitting,
-        reset,
-      );
-    }
-    onClose();
-  };
 
   return (
     <div
@@ -72,10 +56,61 @@ export default function Form({ onClose }: FormProps) {
       {isSubmitting && <Spinner timeoutVal={MAX_TIMEOUT} />}
       <form
         onSubmit={(e) => {
-          if (!isValid || isSubmitting) return;
           e.preventDefault();
-          handleSubmit((data) => onSubmit(data, e))(e);
+          if (!isValid || isSubmitting) return;
+
+          onSubmitPreCheck(
+            getValues(),
+            userAlreadyExists,
+            setEmailWarning,
+          )
+            .then((canSubmit) => {
+              if (!canSubmit) return;
+
+              onSubmitPostCheck(
+                getValues(),
+                setEmailWarning,
+                setUserAlreadyExists,
+                isValid,
+                isSubmitting,
+              )
+                .then((res) => res ? onClose() : reset())
+                .catch((error) => {
+                  console.error(error);
+                });
+            })
+            .catch((error) => {
+              console.error(error);
+            });
         }}
+        // onSubmit={async (e) => {
+        //   e.preventDefault();
+        //   if (!isValid || isSubmitting) return false;
+
+        //   const canSubmit = await onSubmitPreCheck(
+        //     getValues(),
+        //     userAlreadyExists,
+        //     setEmailWarning,
+        //   );
+
+        //   if (!canSubmit) return;
+
+        //   onSubmitPostCheck(
+        //     getValues(),
+        //     setEmailWarning,
+        //     setUserAlreadyExists,
+        //     isValid,
+        //     isSubmitting,
+        //   )
+        //     .then((res) => res ? onClose() : reset())
+        //     .catch((error) => {
+        //       console.error(error);
+        //       reset();
+        //     });
+
+        //   onClose();
+        //   //   handleSubmit((data) => onSubmit(data, e))(e);
+        // }}
         className={`${styles.form} ${isSubmitting ? styles.disabled : ''}`}
       >
         {/* email */}
@@ -167,6 +202,6 @@ export default function Form({ onClose }: FormProps) {
         </span>
         <ThirdPartyButtons />
       </form>
-    </div>
+    </div >
   );
 }

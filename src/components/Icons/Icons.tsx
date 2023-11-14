@@ -31,6 +31,8 @@ const Icons: IconsInterface = {
       strokeWidth='1.5'
       viewBox='0 0 24 24'
       width='24'
+      role='img'
+      aria-label='Alert Badge Icon'
       {...props}
     >
       <path d='M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z' fill='currentColor' />
@@ -46,7 +48,9 @@ const Icons: IconsInterface = {
       viewBox='0 0 1024 1024'
       height='1em'
       width='1em'
+      aria-label='Check Icon'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
       {...props}
     >
       <path
@@ -56,12 +60,14 @@ const Icons: IconsInterface = {
   ),
   Logo: (props?: IconProps) => (
     <svg
-      {...props}
       width='40px'
       height='40px'
       viewBox='0 0 81 80'
+      aria-label='Logo Icon'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
+      {...props}
     >
       <path d='M40.9771 80C63.0687 80 80.9774 62.0914 80.9774 40C80.9773 17.9086 63.0685 -1.38069e-06 40.9769 -8.89459e-07C18.8853 -3.98224e-07 0.976602 17.9086 0.97665 40C0.976698 62.0914 18.8855 80 40.9771 80Z' fill='rgba(0,0,0,0)' />
       <path d='M41.1477 73.9297C59.7223 73.8962 74.6797 58.6603 74.5562 39.8995C74.4327 21.1387 59.275 5.95723 40.7005 5.99078C22.126 6.02432 7.16848 21.2602 7.29199 40.021C7.4155 58.7818 22.5732 73.9633 41.1477 73.9297Z' stroke='#fff' strokeWidth='1.5' strokeMiterlimit='10' />
@@ -86,6 +92,7 @@ const Icons: IconsInterface = {
       strokeWidth='1.5'
       viewBox='0 0 24 24'
       width='24'
+      role='img'
       {...props}
     >
       <path d='M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86L7.86 2z' />
@@ -104,6 +111,7 @@ const Icons: IconsInterface = {
       strokeWidth='1.5'
       viewBox='0 0 24 24'
       width='24'
+      role='img'
       {...props}
     >
       <path d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z' />
@@ -121,6 +129,7 @@ const Icons: IconsInterface = {
       strokeWidth='1.5'
       viewBox='0 0 24 24'
       width='24'
+      role='img'
       {...props}
     >
       <path d='M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94' />
@@ -138,6 +147,7 @@ const Icons: IconsInterface = {
       height='1em'
       width='1em'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
       {...props}
     >
       <path
@@ -158,6 +168,7 @@ const Icons: IconsInterface = {
       height='1em'
       width='1em'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
       {...props}
     >
       <path
@@ -192,6 +203,7 @@ const Icons: IconsInterface = {
       height='1em'
       width='1em'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
       {...props}
     >
       <path d='M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z' />
@@ -203,6 +215,7 @@ const Icons: IconsInterface = {
       fill='none'
       viewBox='3 3 18 18'
       stroke='currentColor'
+      role='img'
       {...props}
     >
       <path

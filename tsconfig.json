@@ -1,44 +1,41 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "allowJs": true,
+    "baseUrl": "src/",
+    "esModuleInterop": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "baseUrl": "src/",
     "paths": {
+      "@/app/*": [
+        "app/*"
+      ],
       "@/assets/*": [
         "app/assets/*"
       ],
       "@/components/*": [
         "components/*"
       ],
-       "@/context/*": [
+      "@/context/*": [
         "context/*"
       ],
       "@/data/*": [
         "data/*"
+      ],
+      "@/db/*": [
+        "db/*"
       ],
       "@/hooks/*": [
         "hooks/*"
@@ -52,23 +49,36 @@
       "@/providers/*": [
         "providers/*"
       ],
+      "@/server/*": [
+        "server/*"
+      ],
       "@/styles/*": [
         "styles/*"
       ],
       "@/utils/*": [
         "utils/*"
-      ],
+      ]
     },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es6"
   },
+  "exclude": [
+    "node_modules",
+    "temp"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./src/app/**/*.ts",
-    "./src/app/**/*.tsx",
-  ],
-  "exclude": [
-    "node_modules"
+    "./src/app/**/*.tsx"
   ]
 }

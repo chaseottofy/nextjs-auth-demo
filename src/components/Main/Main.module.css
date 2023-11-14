@@ -1,12 +1,14 @@
 .main {
   display: flex;
-  overflow: hidden;
   width: 100%;
   max-width: var(--max-width-md);
   min-height: var(--main-min-height);
   max-height: var(--main-min-height);
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
+  padding: var(--p2) var(--p6);
+}
+
+.main h1 {
+  color: var(--grey4);
 }

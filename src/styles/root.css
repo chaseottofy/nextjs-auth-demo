@@ -62,7 +62,10 @@
   --p9: 35px;
 
   /* constant width/height */
-  --header-height: 3.5rem;
+  --header-height: 64px;
+  --half-header: 32px;
+
+  /* --header-height: 3.5rem; */
   --footer-height: 5rem;
   --main-min-height: calc(100vh - var(--header-height));
   --max-width-md: 1200px;
@@ -215,7 +218,7 @@
   --bs2:
     0 5px 14px 0 rgba(39, 39, 42, .2),
     0 18px 36px 0 rgba(39, 39, 42, .12);
-  --bs3: rgba(255,255,255, 0.04) 0 3px 5px;
+  --bs3: rgba(255,255,255, 0.04) 0 2px 5px 0;
   --bs-md: var(--bsout1) 0 1px 2px 0,
     var(--bsout2) 0 1px 3px 0;
   --bs-lg:
@@ -292,6 +295,16 @@ body {
   background-color: var(--black1);
   color: var(--white1);
   font-family: var(--inter);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0
+  }
+
+  100% {
+    background-position: -200% 0
+  }
 }
 
 /* adaptive font sizes

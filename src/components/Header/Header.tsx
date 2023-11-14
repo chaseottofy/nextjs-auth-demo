@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import Form from '@/components/Form/Form';
-import ButtonSkeleton from '@/components/UI/Skeletons/ButtonSkeleton';
+import CustomSkeleton from '../UI/Skeletons/CustomSkeleton';
 import useModal from '@/hooks/useModal';
-import Icons from '../Icons';
+import Icons from '../Icons/Icons';
 import { ThemeButton } from '../UI';
 
 import styles from './Header.module.css';
@@ -16,7 +16,6 @@ export default function Header() {
   const { Logo } = Icons;
   const { showModal } = useModal();
   const [show, setShow] = useState(false);
-
   const [mounted, setMounted] = useState(false);
 
   const handleToggleForm = () => {
@@ -37,7 +36,10 @@ export default function Header() {
       <div className={styles.content}>
         <div className={styles.col1}>
           <Link href='/' className={styles.logo}>
-            <Logo className='svg-1' />
+            <Logo
+              className={'svg-1'}
+              style={{ fill: '#09090b' }}
+            />
           </Link>
         </div>
 
@@ -47,7 +49,7 @@ export default function Header() {
               <li className={styles['nav-item']}>
                 <Link
                   className={`${styles['nav-link']} link-1`}
-                  href='dashbaord'
+                  href='/'
                   data-link-disabled
                   tabIndex={-1}
                 >
@@ -67,9 +69,11 @@ export default function Header() {
           >
             Log in
           </button>
-          {mounted
-            ? <ThemeButton className='btn-icon1' />
-            : <ButtonSkeleton className={styles['theme-button--filler']} />}
+          {
+            mounted
+              ? <ThemeButton className={`${styles['theme-btn--header']} btn-icon1`} />
+              : <CustomSkeleton height={32} width={32} transparent={true} borderRadius={50} />
+          }
         </div>
       </div>
     </header>
