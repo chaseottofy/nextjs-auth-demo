@@ -10,3 +10,5 @@ next.config.js
 .eslintrc.cjs
 stylelint.config.cjs
 temp
+test
+jest.config.ts

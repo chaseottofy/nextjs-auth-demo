@@ -15,6 +15,7 @@ export default function CustomSkeleton({
   transparent?: boolean,
   borderRadius?: number;
 }) {
+
   return (
     <div
       className={`${styles['custom-skeleton']} ${className}`}

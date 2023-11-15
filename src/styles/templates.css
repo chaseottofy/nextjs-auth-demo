@@ -1,22 +1,46 @@
 /*
 @fileoverview:
-Ideally you'd want to modudlarize this and import components
-when necessary, but I'm still fine tuning this and changing
-it up a lot.
 
+* Some base styles are already applied in 'sanitize.css'.
+* This file adds re-usables both in form of classes and
+  data attributes.
+
+-------------------------------------------------------
+TOC (in order of appearance) :
 - Layout
+
 - Buttons
+    * hover/active/focus are all configured to only apply
+      if the button is not disabled. 
+      This is to avoid having to use 'pointer-events: none'
+
 - Form Elements
-  - Input
-  - Label
+    * Input
+    * Label
+
 - Links
+
 - SVG
+
 - Text
+
 - Flex
+
 - General Utilities
+
 - Transition Utilities
+
 - Popup Utilities
-- ID Specific, Project Specific
+
+- Custom Scrollbar
+    * to enable a custom scrollbar, add the following attribute
+      to the element   --   data-custom-scrollbar="true"
+
+- Handle No-Descending-Specificity (nested selectors)
+    * When two selectors have the same specificity, the one
+      that occurs last will take priority. If any conflicting
+      definitions arise, handle them at the bottom of the file
+      to avoid confusion.
 */
 
 /* LAYOUT
@@ -34,8 +58,6 @@ it up a lot.
 }
 
 /* BUTTONS: 
-- specifically made to be compatible with forms
-- and in combination with a few data attributes like:
 1. data-has-error=boolean
 2. data-has-warn=boolean
 3. data-has-check=boolean
@@ -51,9 +73,6 @@ it up a lot.
   justify-content: center;
   border-radius: var(--br1);
   outline: 1px solid transparent;
-  transition-duration: var(--duration-1);
-  transition-property: color, background-color, border-color;
-  transition-timing-function: var(--bez-1);
   white-space: nowrap;
 }
 
@@ -63,7 +82,7 @@ it up a lot.
   background-color: var(--primary1);
   color: var(--white1);
   font-size: .875rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: .05em;
   line-height: 1.25rem;
   text-transform: uppercase;
@@ -81,13 +100,7 @@ it up a lot.
 .btn-2,
 .btn-3,
 .btn-4 {
-  font-size: 0.825rem;
-  font-weight: 400;
-}
-
-.btn-3,
-.btn-4 {
-  font-weight: 400;
+  font-size: 0.775rem;
 }
 
 .btn-2 {
@@ -97,7 +110,7 @@ it up a lot.
 }
 
 .btn-3 {
-  height: 2.125rem;
+  height: 2rem;
   background-color: transparent;
 }
 
@@ -121,22 +134,17 @@ it up a lot.
 .btn-icon1 {
   width: 2.25rem;
   height: 2.25rem;
-  max-width: 2.25rem;
-  max-height: 2.25rem;
   color: var(--white1) !important;
   fill: var(--white1) !important;
-  border-radius: var(--brhalf);
-}
-
-.btn-icon1:active {
-  background-color: var(--grey8);
+  border-radius: 0 !important;
+  padding: 0;
+  line-height: normal;
 }
 
 .btn-icon1:disabled {
   pointer-events: none;
   user-select: none;
-  background-color: var(--grey4);
-  color: var(--black2) !important;
+  fill: var(--grey5) !important;
 }
 
 .btn-1:not(:disabled):hover,
@@ -149,7 +157,8 @@ it up a lot.
 
 .btn-icon1:not(:disabled):focus-visible,
 .btn-icon1:not(:disabled):hover {
-  background-color: var(--black2);
+  color: var(--grey4);
+  fill: var(--grey4);
 }
 
 .btn-1:not(:disabled):focus-visible,
@@ -161,6 +170,7 @@ it up a lot.
 .btn-2:not(:disabled):focus-visible,
 .btn-3:not(:disabled):focus-visible {
   outline: 1.5px dotted var(--white1);
+  color: var(--white2);
 }
 
 .btn-1:not(:disabled):active,
@@ -187,7 +197,9 @@ it up a lot.
 ===================================== */
 .input-1 {
   width: 100%;
-  min-width: 100%;
+
+  /* min-width: 100%; */
+  max-width: 700px !important;
   height: 2.25rem;
   background-color: var(--black1);
   font-size: 0.8rem;
@@ -197,8 +209,8 @@ it up a lot.
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input-1:hover,
-.input-1:focus-visible {
+.input-1:not(:disabled):hover,
+.input-1:not(:disabled):focus-visible {
   outline: 2px solid var(--grey10);
 }
 
@@ -267,8 +279,6 @@ it short and sweet since it technically still affects layout.
   background-color: transparent;
   cursor: pointer;
   opacity: 0;
-
-  /* outline: none; */
 }
 
 .checkbox-1 label {
@@ -303,10 +313,6 @@ it short and sweet since it technically still affects layout.
   pointer-events: none;
 }
 
-.checkbox-1 label span svg {
-  opacity: 0;
-}
-
 .checkbox-1 label[data-has-check="false"]::after {
   position: absolute;
   z-index: 1002;
@@ -328,18 +334,20 @@ it short and sweet since it technically still affects layout.
   outline: 2px solid var(--secondary1-offset) !important;
 }
 
-.checkbox-1 label[data-has-check="true"] span svg {
-  fill: #fff !important;
-  opacity: 1;
-}
-
 /* Links <a>
 ===================================== */
-.link-1[data-link-disabled="true"],
-.link-2[data-link-disabled="true"] {
-  pointer-events: none !important;
-  user-select: none !important;
-  opacity: .6;
+.link-1,
+.link-2 {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  color: var(--grey4);
+  font-size: .775rem;
+  padding: 0 .25rem;
+  background-color: transparent;
+  white-space: nowrap;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .link-2 {
@@ -347,18 +355,21 @@ it short and sweet since it technically still affects layout.
   border-radius: var(--br1);
 }
 
-.link-2:hover {
-  background-color: var(--grey9);
+.link-1[data-link-disabled="true"],
+.link-2[data-link-disabled="true"] {
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: .6;
 }
 
-.link-1:not(:disabled):active,
-.link-2:not(:disabled):active {
-  background-color: var(--grey10);
+.link-1:not(:disabled):hover,
+.link-2:not(:disabled):hover {
+  color: var(--grey5) !important;
 }
 
 .link-1:not(:disabled):focus-visible,
 .link-2:not(:disabled):focus-visible {
-  background-color: var(--grey10);
+  color: var(--link-hover);
 }
 
 /* SVG
@@ -381,8 +392,8 @@ it short and sweet since it technically still affects layout.
 }
 
 .svg-3 {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.625rem;
+  height: 1.625rem;
 }
 
 .svg-4 {
@@ -525,24 +536,46 @@ it short and sweet since it technically still affects layout.
   visibility: visible;
 }
 
-/* ID SPECIFIC / PROJECT SPECIFIC
+/* CUSTOM SCROLLBAR
+====================================== */
+[data-custom-scrollbar="true"]::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+
+[data-custom-scrollbar="true"]::-webkit-scrollbar-thumb {
+  min-height: 40px;
+  border: none;
+  border-radius: var(--br1);
+  background-color: var(--grey8);
+}
+
+[data-custom-scrollbar="true"]:hover::-webkit-scrollbar-thumb,
+[data-custom-scrollbar="true"]:focus::-webkit-scrollbar-thumb {
+  background-color: var(--grey7);
+}
+
+[data-custom-scrollbar="true"]::-webkit-scrollbar-thumb:active {
+  background-color: var(--grey5);
+}
+
+/* HANDLE NO-DESCENDING-SPECIFICITY
 ===================================== */
-#github-btn {
-  border-color: #5f6c7e;
-  background-color: #24292f;
-  color: #fff;
-  fill: #fff;
+.checkbox-1 label span svg {
+  opacity: 0;
 }
 
-#github-btn:not(:disabled):focus-visible {
-  outline: 2px solid #5f6c7e !important;
+.btn-icon1:disabled svg {
+  fill: var(--grey5) !important;
 }
 
-#github-btn:not(:disabled):active {
-  border-color: #2f363e !important;
-  background-color: #2f363e !important;
+.checkbox-1 label[data-has-check="true"] span svg {
+  fill: #fff !important;
+  opacity: 1;
 }
 
-#google-btn {
-  border-color: var(--offsetwhite1);
+.btn-icon1:not(:disabled):hover svg {
+  color: var(--grey5);
+  fill: var(--grey5);
 }

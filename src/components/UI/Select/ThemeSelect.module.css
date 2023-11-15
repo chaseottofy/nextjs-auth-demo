@@ -1,10 +1,8 @@
 .container {
   position: absolute;
-  top:4px;
+  top: var(--header-height);
   right: 1rem;
   min-width: 105px;
-
-  /* min-width: 92px; */
   height: auto;
   background-color: var(--black3);
   border-radius: var(--br2);

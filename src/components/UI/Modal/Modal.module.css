@@ -1,16 +1,17 @@
 .modal {
-  position: absolute;
-  top: var(--header-height);
+  max-width: var(--max-width-lg);
+  position: fixed;
+  top:0;
+  height: 100%;
+  max-height: 100vh;
   left: 0;
   right: 0;
-  background-color: transparent;
   display: flex;
-  height: calc(100vh - var(--header-height));
-  max-width: var(--max-width-lg);
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 100%;
   z-index: var(--z-modal);
+  background-color: transparent;
 }

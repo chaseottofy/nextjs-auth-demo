@@ -1,14 +1,38 @@
 .main {
+  position: relative;
+  z-index: var(--z-main);
   display: flex;
+  height: 100vh;
+  /* height: calc(100vh - var(--header-height)); */
+  padding-top: var(--header-height);
   width: 100%;
-  max-width: var(--max-width-md);
-  min-height: var(--main-min-height);
-  max-height: var(--main-min-height);
   flex-direction: column;
   margin: 0 auto;
-  padding: var(--p2) var(--p6);
 }
+
+/* .main::after {
+  content: '';
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  filter: url('#grainy2');
+  opacity: .05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  user-select: none;
+  z-index:9999;
+} */
 
 .main h1 {
   color: var(--grey4);
+}
+
+.content-wrapper {
+  max-width: var(--max-width-md);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-bottom: var(--p8);
 }

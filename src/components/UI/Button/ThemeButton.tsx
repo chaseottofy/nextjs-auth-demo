@@ -1,17 +1,23 @@
 import * as React from 'react';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import { useTheme as useNextTheme } from 'next-themes';
 
 import Icons from '@/components/Icons/Icons';
 import useModal from '@/hooks/useModal';
-
 import ThemeSelect from '../Select/ThemeSelect';
+import CustomSkeleton from '../Skeletons/CustomSkeleton';
 
-export default function ThemeButton({ className = 'btn-3' }: { className?: string; }) {
+export default function ThemeButton({
+  className = 'btn-3',
+  svgClassName = 'svg-4',
+}: {
+  className: string;
+  svgClassName: string;
+}) {
   const { theme, setTheme } = useNextTheme();
   const { Sun, Moon } = Icons;
   const { showModal } = useModal();
+  const [mounted, setMounted] = useState(false);
   const [hasModal, setHasModal] = useState(false);
 
   const handleClick = () => {
@@ -22,35 +28,38 @@ export default function ThemeButton({ className = 'btn-3' }: { className?: strin
         theme={theme}
         setTheme={setTheme}
         onClick={(e?: React.MouseEvent<HTMLElement>) => {
-          // event was triggered by outside click or escape key, no ref
-          if (!e) {
-            onClose();
-            setHasModal(false);
-            return;
-          }
-
-          const currentTarget = e?.currentTarget as HTMLLIElement;
-          setTheme(currentTarget.dataset.themeValue as 'light' | 'dark' | 'system');
           onClose();
           setHasModal(false);
+          if (!e) return; // handled by @hooks/useClickOutside
+          setTheme(e?.currentTarget.dataset.themeValue as 'light' | 'dark' | 'system');
         }}
       />
     ));
   };
+
+  useEffect(() => setMounted(true), []);
 
   return (
     <button
       aria-haspopup='listbox'
       aria-expanded={hasModal}
       aria-controls='theme-select-listbox'
-      className={className}
+      className={`${className} btn-icon1`}
       onClick={handleClick}
       title='change theme'
       id='theme-select-button'
       type='button'
       disabled={hasModal}
     >
-      {theme === 'light' ? <Sun className='svg-6' /> : <Moon className='svg-6' />}
+      {mounted ? (
+        theme === 'light' ? (
+          <Sun className={svgClassName} />
+        ) : (
+          <Moon className={svgClassName} />
+        )
+      ) : (
+        <CustomSkeleton className={svgClassName} />
+      )}
     </button>
   );
 }

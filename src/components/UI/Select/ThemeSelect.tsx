@@ -37,7 +37,7 @@ export default function ThemeSelect({
       tabIndex={0}
       onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
         const { key } = e;
-
+        e.preventDefault();
         setActiveItem((prev) => {
           return key === 'ArrowDown'
             ? mod(prev + 1, 3)

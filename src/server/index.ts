@@ -1,17 +1,18 @@
+import SqliteDB, { SqliteError } from 'better-sqlite3';
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
-import SqliteDB, { SqliteError } from 'better-sqlite3';
 import { z } from 'zod';
 
-import { publicProcedure, router } from './trpc';
-
 import { users } from '@/db/schema';
+
+import { publicProcedure, router } from './trpc';
 
 const sqlite = new SqliteDB('sqlite.db');
 const db = drizzle(sqlite);
 
 migrate(db, { migrationsFolder: 'drizzle' });
+
 
 export const appRouter = router({
   getUsers: publicProcedure

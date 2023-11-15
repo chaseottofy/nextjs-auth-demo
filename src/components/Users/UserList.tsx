@@ -3,11 +3,14 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { SqliteError } from 'better-sqlite3';
+
 import { trpc } from '@/app/_trpc/client';
-import CustomSkeleton from './UI/Skeletons/CustomSkeleton';
-// import styles from './TodoList.module.css';
+import CustomSkeleton from '../UI/Skeletons/CustomSkeleton';
+
+import styles from './UserList.module.css';
 
 export default function UserList() {
+  // fix timeout
   const getUsers = trpc.getUsers.useQuery();
   const resolvedData = getUsers.data;
   const addUser = trpc.addUser.useMutation({
@@ -24,32 +27,53 @@ export default function UserList() {
   const [content, setContent]: [string, React.Dispatch<React.SetStateAction<string>>] = useState('');
 
   return (
-    <div>
-      <div style={{
-        minHeight: '240px',
-        maxHeight: '240px',
-        height: '100%',
-        margin: '1rem auto',
-        overflowY: 'auto',
-      }}>
+    <div className={styles.container}>
+      <ul
+        className={styles.log}
+        data-custom-scrollbar={true}
+      >
         {
           resolvedData ? resolvedData.map((user) => {
             return (
-              <div key={user.id}>
-                <div>
-                  <span>
-                    {user.id}
-                    {' > '}
-                  </span>
-                  <span>{user.content}</span>
-                </div>
-              </div>
+              <li
+                key={user.id}
+                className={styles['log-item']}
+              >
+                <span
+                  className={styles['log-item--id']}
+                >
+                  {user.id}
+                  {user.id <= 9 ? '\u00A0' : ''}
+                  {' > '}
+                </span>
+                <span
+                  className={styles['log-item--content']}
+                >
+                  {user.content}
+                </span>
+              </li>
             );
-          }) : <CustomSkeleton height={240} />
+          }) : (
+            <CustomSkeleton
+              height={360}
+              className={styles.usersSkel}
+            />
+          )
         }
-      </div>
-      <div>
-        <label htmlFor='content'>content</label>
+      </ul>
+
+      <div
+        style={{
+          display: 'flex',
+          maxWidth: '95%',
+          padding: '1rem 3rem 1rem 0',
+          margin: '1rem auto',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <label htmlFor='content'>testing api... not complete</label>
+        <br />
         <input
           type='text'
           id='content'
@@ -59,14 +83,13 @@ export default function UserList() {
         />
         <button
           className='btn-4'
+          style={{ marginTop: '1rem' }}
           onClick={() => {
             const curr: string = content.trim();
             if (curr.length > 0) {
               const result = addUser.mutateAsync(curr);
-
               Promise.resolve(result)
                 .then((res) => {
-                  // returns what is returnd in addUser
                   console.log(res, 'res');
                 })
                 .catch((error: SqliteError) => {

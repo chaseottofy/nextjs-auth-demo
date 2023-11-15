@@ -35,6 +35,30 @@
   justify-content: center;
 }
 
+#github-btn {
+  border-color: #5f6c7e;
+  background-color: #24292f;
+  color: #fff;
+  fill: #fff;
+}
+
+#github-btn svg {
+  fill: #fff;
+}
+
+#github-btn:not(:disabled):focus-visible {
+  outline: 2px solid #5f6c7e !important;
+}
+
+#github-btn:not(:disabled):active {
+  border-color: #2f363e !important;
+  background-color: #2f363e !important;
+}
+
+#google-btn {
+  border-color: var(--offsetwhite1);
+}
+
 @media screen and (max-width: 380px) {
   .third-party {
     flex-direction: column;

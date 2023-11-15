@@ -8,6 +8,6 @@ const {
 } = t;
 
 export {
-  router,
   publicProcedure,
+  router,
 };

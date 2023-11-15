@@ -106,36 +106,36 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
-    'simple-import-sort/exports': 'off',
-    'simple-import-sort/imports': 'off',
-    // 'simple-import-sort/imports': [
-    //   'warn',
-    //   {
-    //     groups: [
-    //       [
-    //         '^\\u0000',
-    //       ],
-    //       [
-    //         '^react',
-    //         '^@?\\w',
-    //       ],
-    //       [
-    //         '^@/',
-    //         '^\\.\\.(?!/?$)',
-    //         '^\\.\\./?$',
-    //       ],
-    //       [
-    //         '^\\./(?=.*/)(?!/?$)',
-    //         '^\\.(?!/?$)',
-    //         '^\\./?$',
-    //       ],
-    //       [
-    //         '^@?\\w',
-    //         '^.+\\.s?css$',
-    //       ],
-    //     ],
-    //   },
-    // ],
+    'simple-import-sort/exports': 'warn',
+    // 'simple-import-sort/imports': 'off',
+    'simple-import-sort/imports': [
+      'warn',
+      {
+        groups: [
+          [
+            '^\\u0000',
+          ],
+          [
+            '^react',
+            '^@?\\w',
+          ],
+          [
+            '^@/',
+            '^\\.\\.(?!/?$)',
+            '^\\.\\./?$',
+          ],
+          [
+            '^\\./(?=.*/)(?!/?$)',
+            '^\\.(?!/?$)',
+            '^\\./?$',
+          ],
+          [
+            '^@?\\w',
+            '^.+\\.s?css$',
+          ],
+        ],
+      },
+    ],
     'unicorn/consistent-destructuring': 'off',
     'unicorn/filename-case': 'off',
     'unicorn/no-array-for-each': 'off',

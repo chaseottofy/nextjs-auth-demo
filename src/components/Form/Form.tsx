@@ -52,6 +52,7 @@ export default function Form({ onClose }: FormProps) {
       ref={modalRef}
       className={styles.wrapper}
       data-is-submitting={isSubmitting}
+      data-custom-scrollbar={true}
     >
       {isSubmitting && <Spinner timeoutVal={MAX_TIMEOUT} />}
       <form
@@ -83,34 +84,6 @@ export default function Form({ onClose }: FormProps) {
               console.error(error);
             });
         }}
-        // onSubmit={async (e) => {
-        //   e.preventDefault();
-        //   if (!isValid || isSubmitting) return false;
-
-        //   const canSubmit = await onSubmitPreCheck(
-        //     getValues(),
-        //     userAlreadyExists,
-        //     setEmailWarning,
-        //   );
-
-        //   if (!canSubmit) return;
-
-        //   onSubmitPostCheck(
-        //     getValues(),
-        //     setEmailWarning,
-        //     setUserAlreadyExists,
-        //     isValid,
-        //     isSubmitting,
-        //   )
-        //     .then((res) => res ? onClose() : reset())
-        //     .catch((error) => {
-        //       console.error(error);
-        //       reset();
-        //     });
-
-        //   onClose();
-        //   //   handleSubmit((data) => onSubmit(data, e))(e);
-        // }}
         className={`${styles.form} ${isSubmitting ? styles.disabled : ''}`}
       >
         {/* email */}

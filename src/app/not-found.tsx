@@ -1,20 +1,30 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+import { authors, creator, icons, keywords } from './meta';
+
+import styles from './not-found/NotFound.module.css';
+
+export const metadata: Metadata = {
+  title: '404',
+  description: 'Page not found',
+  keywords,
+  creator,
+  authors,
+  icons,
+};
 
 export default function NotFound() {
   return (
     <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: '5rem',
-        fontWeight: 'bold',
-      }}
+      className={styles.wrapper}
+      tabIndex={-1}
     >
-      <h2>404</h2>
-      <Link href='/'>Return Home</Link>
+      <div className={styles.container}>
+        <h2>404</h2>
+        <span className={styles.hr} />
+        <Link href='/' className={styles.backlink}>Return Home</Link>
+      </div>
     </div>
   );
 }

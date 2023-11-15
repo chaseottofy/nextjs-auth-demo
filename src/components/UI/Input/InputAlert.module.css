@@ -20,7 +20,7 @@
 
 .warn {
   z-index: 1000;
-  background-color: var(--black1);
+  background-color: var(--grey11);
   color: var(--warn1);
 }
 

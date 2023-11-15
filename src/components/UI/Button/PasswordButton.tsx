@@ -15,7 +15,8 @@ function PasswordButton({
 
   return (
     <button
-      className={`${styles['pass-reveal']} btn-icon1`}
+      className={`${styles['pass-reveal']}`}
+      // className={`${styles['pass-reveal']} btn-icon1`}
       type='button'
       onClick={() => setRevealPass((prev) => !prev)}
     >
