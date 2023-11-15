@@ -110,5 +110,3 @@ export default function Header() {
     </header>
   );
 }
-{/* <Gradient /> */ }
-{/* </> */ }
