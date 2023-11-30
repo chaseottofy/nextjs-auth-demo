@@ -101,7 +101,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'simple-import-sort/exports': 2,
-    'simple-import-sort/imports': [0, {
+    'simple-import-sort/imports': [2, {
       // https://github.com/lydell/eslint-plugin-simple-import-sort#custom-grouping
       groups: [// Side effect imports.
       ['^\\u0000'], // Node.js builtins prefixed with `node:`.

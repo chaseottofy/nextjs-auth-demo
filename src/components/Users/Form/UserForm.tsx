@@ -11,8 +11,12 @@ import UserInput from './UserInput';
 
 import styles from './UserForm.module.css';
 
-export default function UserForm({ addUser }: {
+export default function UserForm({
+  addUser,
+  // clearSome,
+}: {
   addUser: { mutateAsync: (inputContent: string) => Promise<unknown>; };
+  // clearSome: { mutateAsync: () => Promise<unknown>; };
 }) {
   const [inputContent, setInputContent]: [string, SetStateType<string>] = useState('');
   const [isSubmitting, setIsSubmitting]: [boolean, SetStateType<boolean>] = useState(false);
@@ -29,15 +33,13 @@ export default function UserForm({ addUser }: {
 
     setIsSubmitting(true);
     Promise.resolve(await addUser.mutateAsync(verifiedData as string))
-      .then((res) => {
-        console.log(res, 'inner res');
-        setInputContent(''); // Resetting the input on success
+      .then(() => {
+        setInputContent('');
       })
       .catch((error: SqliteError) => {
         console.error(error, 'catch error');
       })
       .finally(() => {
-        console.log('posted', inputContent);
         setIsSubmitting(false);
       });
   };

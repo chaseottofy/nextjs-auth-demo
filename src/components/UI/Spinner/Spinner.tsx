@@ -17,7 +17,6 @@ function Spinner({ timeoutVal }: { timeoutVal: number; }) {
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
-    console.log('Spinner mounted');
     const timer = setTimeout(() => {
       setIsActive(false);
     }, timeoutVal);

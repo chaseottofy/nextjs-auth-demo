@@ -41,7 +41,6 @@ export default function ThemeButton({
   };
 
   const handleMobileClick = () => {
-    console.log('clicked');
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 

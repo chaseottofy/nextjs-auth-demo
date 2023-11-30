@@ -1,5 +1,6 @@
 export { default as determineInputAlertProps } from './buildInputAlert';
 export { default as fakeTimeout } from './fakeTimeout';
+export { default as getDateTime } from './getDateTime';
 export { default as handleKeyDownPassword } from './handleKeyDownPassword';
 export { default as handlePaste } from './handlePaste';
 export { default as mod } from './mod';

@@ -48,7 +48,10 @@ export type ModalContent = (onClose: () => void) => React.ReactNode;
 
 export interface ModalContextProps {
   hideModal: () => void;
-  showModal: (content: ModalContent) => void;
+  showModal: (
+    content: ModalContent,
+    isUnset?: boolean,
+  ) => void;
   updateModal: (content: ModalContent) => void;
 }
 
@@ -56,6 +59,7 @@ export interface ModalProps {
   isOpen: boolean;
   content: ModalContent;
   onClose: () => void;
+  isUnset?: boolean; // use for toast
 }
 
 export interface ModalProviderProps {

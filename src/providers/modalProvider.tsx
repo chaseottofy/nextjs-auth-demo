@@ -15,8 +15,16 @@ export default function ModalProvider({
     setModalProps(null);
   }, []);
 
-  const showModal = useCallback((content: ModalContent) => {
-    setModalProps({ isOpen: true, content, onClose: hideModal });
+  const showModal = useCallback((
+    content: ModalContent,
+    isUnset?: boolean,
+  ) => {
+    setModalProps({
+      isOpen: true,
+      content,
+      onClose: hideModal,
+      isUnset: !!isUnset,
+    });
   }, [hideModal]);
 
   const updateModal = useCallback((content: ModalContent) => {

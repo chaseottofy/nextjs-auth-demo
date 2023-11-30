@@ -35,21 +35,24 @@ const appRouter = router({
       }),
     )
     .mutation(async (opts) => {
+      const { done, id } = opts.input;
       await db
         .update(users)
-        .set({ done: opts.input.done })
-        .where(eq(users.id, opts.input.id));
-      // .run();
+        .set({ done })
+        .where(eq(users.id, id));
       return true;
     }),
-  clearDb: publicProcedure.mutation(async () => {
-    await db.delete(users);
-    // await db.deleteFrom(users).run();
-    // console.log('cleared');
-    // console.log(db.select().from(users).all());
-    // return true;
-  }),
-
+  clearDb: publicProcedure
+    .mutation(async () => {
+      await db.delete(users);
+    }),
+  clearSome: publicProcedure
+    .input(z.number())
+    .mutation(async (opts) => {
+      const id = opts.input;
+      await db.delete(users).where(eq(users.id, id));
+      return id;
+    }),
 });
 
 export type AppRouter = typeof appRouter;

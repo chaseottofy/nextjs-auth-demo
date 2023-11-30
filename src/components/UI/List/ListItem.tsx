@@ -15,11 +15,14 @@ export default function ListItem({
   value: string;
   checkmark?: boolean;
 }) {
+  const isActive = active ? 'true' : 'false';
+  const isChecked = checkmark ? 'true' : 'false';
+
   return (
     <li
-      aria-selected={active ? 'true' : 'false'}
-      data-active-tab={active ? 'true' : 'false'}
-      data-checkmark={checkmark ? 'true' : 'false'}
+      aria-selected={isActive}
+      data-active-tab={isActive}
+      data-checkmark={isChecked}
       data-theme-value={value}
       id={id}
       onClick={onClick}

@@ -1,7 +1,7 @@
 .modal {
   position: fixed;
   z-index: var(--z-modal);
-  top:0;
+  top: 0;
   right: 0;
   left: 0;
   display: flex;
@@ -13,12 +13,15 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background-color: transparent;
-  outline:none;
+  /* background-color: transparent; */
+  outline: none;
 }
 
-/* @media screen and (max-height: 540px) {
-  .modal {
-    background-color: var(--offsetblack2);
-  }
-} */
+.modal[data-modal-unset='true'] {
+  height: auto !important;
+  width: auto !important;
+  max-width: fit-content !important;
+  max-height: fit-content !important;
+  inset: unset !important;
+  margin: unset !important;
+}

@@ -3,9 +3,9 @@ import { useCallback, useEffect, useState } from 'react';
 
 import Icons from '@/components/Icons/Icons';
 import { MOBILE_BREAKPOINT, THEMES } from '@/data/constants';
-
 import { useClickOutside } from '@/hooks/index';
 import { mod } from '@/utils/index';
+
 import ListItem from '../List/ListItem';
 
 import styles from './ThemeSelect.module.css';

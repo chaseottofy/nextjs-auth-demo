@@ -307,16 +307,6 @@ body {
   text-rendering: geometricprecision;
 }
 
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0
-  }
-
-  100% {
-    background-position: -200% 0
-  }
-}
-
 /* adaptive font sizes
 ===================================== */
 @media screen and (max-width: 1020px) {

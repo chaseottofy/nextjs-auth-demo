@@ -5,9 +5,9 @@ import * as React from 'react';
 import { NAV } from '@/data/constants';
 
 import NavLink from './HeaderNavLink';
-import MenuButton from '../UI/Button/MenuButton';
 import Icons from '../Icons/Icons';
 import { ThemeButton } from '../UI';
+import MenuButton from '../UI/Button/MenuButton';
 
 import styles from './Header.module.css';
 

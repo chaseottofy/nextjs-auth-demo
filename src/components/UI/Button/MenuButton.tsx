@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useState } from 'react';
-// import { useEffect, useState } from 'react';
 
+// import { useEffect, useState } from 'react';
 import useModal from '@/hooks/useModal';
-import MobileMenu from '../Menu/MobileMenu';
+
 import Icons from '../../Icons/Icons';
+import MobileMenu from '../Menu/MobileMenu';
 
 const { Close, Menu } = Icons;
 

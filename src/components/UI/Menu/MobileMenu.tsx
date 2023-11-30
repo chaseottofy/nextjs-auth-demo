@@ -3,13 +3,14 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { MOBILE_BREAKPOINT, NAV } from '@/data/constants';
 import { useClickOutside } from '@/hooks/index';
-import { mod } from '@/utils/index';
 import { NavLinkProp } from '@/models/interfaces';
+import { mod } from '@/utils/index';
+
+import NavLink from '../../Header/HeaderNavLink';
+import Icons from '../../Icons/Icons';
+import ThemeButton from '../Button/ThemeButton';
 import ListItem from '../List/ListItem';
 
-import ThemeButton from '../Button/ThemeButton';
-import Icons from '../../Icons/Icons';
-import NavLink from '../../Header/HeaderNavLink';
 import styles from './MobileMenu.module.css';
 
 const { accountRoute, dashboardRoute, githubRoute } = NAV;

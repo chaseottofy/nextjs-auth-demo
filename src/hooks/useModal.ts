@@ -4,10 +4,17 @@ import {
 
 import { ModalContext } from '@/context/modalContext';
 
+/*
+export default function useModal(
+  isUnset?: boolean,
+)
+
+*/
 export default function useModal() {
   const context = useContext(ModalContext);
   if (!context) {
     throw new Error('useModal must be used within a ModalProvider');
   }
+
   return context;
 }
