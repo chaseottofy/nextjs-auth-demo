@@ -13,16 +13,12 @@ const db = drizzle(sqlite);
 
 migrate(db, { migrationsFolder: 'drizzle' });
 
-
-export const appRouter = router({
+const appRouter = router({
   getUsers: publicProcedure
     .query(() => {
-      // await db.select().from(users).all();
       const res = db.select().from(users).all();
       return res || [];
     }),
-
-  // e.g. addUser.mutate('hello')
   addUser: publicProcedure
     .input(z.string()).mutation(async (opts) => {
       if (opts.input === 'error') {
@@ -31,7 +27,6 @@ export const appRouter = router({
       await db.insert(users).values({ content: opts.input, done: 0 });
       return true;
     }),
-
   setDone: publicProcedure
     .input(
       z.object({
@@ -44,11 +39,19 @@ export const appRouter = router({
         .update(users)
         .set({ done: opts.input.done })
         .where(eq(users.id, opts.input.id));
+      // .run();
       return true;
     }),
+  clearDb: publicProcedure.mutation(async () => {
+    await db.delete(users);
+    // await db.deleteFrom(users).run();
+    // console.log('cleared');
+    // console.log(db.select().from(users).all());
+    // return true;
+  }),
+
 });
 
 export type AppRouter = typeof appRouter;
-// getUser: publicProcedure.query(async (id: number) => {
-//   return await db.select().from(users).where(eq(users.id, id)).first();
-// }),
+
+export { appRouter };

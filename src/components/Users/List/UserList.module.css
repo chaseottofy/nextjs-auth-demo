@@ -1,0 +1,85 @@
+.log {
+  position: relative;
+  overflow: hidden scroll;
+  height: 454px;
+  max-height: calc(100vh - var(--header-height) - 10rem);
+  min-height: 200px;
+  border: var(--border1);
+  border-radius: var(--br2);
+  padding-bottom: .375rem;
+}
+
+.log[data-is-loading="true"]::-webkit-scrollbar-thumb {
+  background-color: var(--black1) !important;
+}
+
+.datetime {
+  font-size: .75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 1.75rem;
+  height: 1.75rem;
+  z-index: 3;
+  position: sticky;
+  padding-left: 2.825rem;
+  background-color: var(--black1);
+  top: 0;
+  border-bottom: var(--border1);
+}
+
+.datetime:before {
+  position: absolute;
+  content: '>';
+  color: var(--grey5) !important;
+  left: 1.25rem;
+}
+
+.usersSkel {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: var(--br1);
+  opacity: .8;
+  z-index: 1000;
+}
+
+.log-item {
+  display: flex;
+  flex-direction: row;
+  font-size: .8rem;
+  min-height: 1.375rem;
+  font-weight: 400;
+  line-height: 1.375;
+}
+
+.log-item * {
+  font-family: var(--monospaceFont) !important;
+}
+
+/* **************************** */
+.log-item--id {
+  width: 1.75rem;
+  position: relative;
+  text-align: right;
+  color: var(--grey6);
+}
+
+.log-item--content {
+  width: calc(100% - 5rem);
+  color: var(--grey4);
+  padding-left: 1.25rem;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+
+.log-item--done {
+  width: 2.5rem;
+  color: var(--grey4);
+  text-align: right;
+  padding-right: .75rem;
+}
+
+/* **************************** */

@@ -2,6 +2,7 @@ module.exports = {
   extends: [
     'stylelint-config-standard',
     'stylelint-config-css-modules',
+    'stylelint-config-idiomatic-order',
   ],
   plugins: [
     'stylelint-declaration-block-no-ignored-properties',

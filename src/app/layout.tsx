@@ -9,8 +9,8 @@ import {
   TrpcProvider,
 } from '@/providers/index';
 
-import '@/styles/sanitize.css';
 import '@/styles/root.css';
+import '@/styles/sanitize.css';
 import '@/styles/templates.css';
 
 const Inter = localFont({
@@ -21,12 +21,7 @@ const Inter = localFont({
   preload: true,
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
+export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={Inter.variable} id='root'>

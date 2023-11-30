@@ -4,15 +4,18 @@ import { useTheme as useNextTheme } from 'next-themes';
 
 import Icons from '@/components/Icons/Icons';
 import useModal from '@/hooks/useModal';
+
 import ThemeSelect from '../Select/ThemeSelect';
 import CustomSkeleton from '../Skeletons/CustomSkeleton';
 
 export default function ThemeButton({
   className = 'btn-3',
   svgClassName = 'svg-4',
+  isMobile = false,
 }: {
   className: string;
   svgClassName: string;
+  isMobile?: boolean;
 }) {
   const { theme, setTheme } = useNextTheme();
   const { Sun, Moon } = Icons;
@@ -37,6 +40,11 @@ export default function ThemeButton({
     ));
   };
 
+  const handleMobileClick = () => {
+    console.log('clicked');
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   useEffect(() => setMounted(true), []);
 
   return (
@@ -45,21 +53,17 @@ export default function ThemeButton({
       aria-expanded={hasModal}
       aria-controls='theme-select-listbox'
       className={`${className} btn-icon1`}
-      onClick={handleClick}
+      onClick={isMobile ? handleMobileClick : handleClick}
       title='change theme'
       id='theme-select-button'
       type='button'
       disabled={hasModal}
     >
-      {mounted ? (
-        theme === 'light' ? (
-          <Sun className={svgClassName} />
-        ) : (
-          <Moon className={svgClassName} />
-        )
-      ) : (
-        <CustomSkeleton className={svgClassName} />
-      )}
+      {mounted
+        ? (theme === 'light'
+          ? (<Sun className={svgClassName} />)
+          : (<Moon className={svgClassName} />))
+        : (<CustomSkeleton className={svgClassName} />)}
     </button>
   );
 }

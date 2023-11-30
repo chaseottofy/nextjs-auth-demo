@@ -25,6 +25,7 @@ const onSubmitPreCheck = async (
   userAlreadyExists: string[],
   setEmailWarning: (value: { active: boolean; message: string; }) => void,
 ): Promise<boolean> => {
+  // eslint-disable-next-line no-promise-executor-return
   await new Promise((resolve) => setTimeout(resolve, 2_000));
   // const timeout = new Promise((resolve) => setTimeout(resolve, 2_000));
   if (userAlreadyExists.length > 0 && userAlreadyExists.includes(data.email)) {

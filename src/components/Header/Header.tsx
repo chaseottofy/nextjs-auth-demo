@@ -1,75 +1,44 @@
 'use client';
 
 import * as React from 'react';
-import { useState } from 'react';
-import Link from 'next/link';
 
-import Form from '@/components/Form/Form';
 import { NAV } from '@/data/constants';
-import useModal from '@/hooks/useModal';
+
+import NavLink from './HeaderNavLink';
+import MenuButton from '../UI/Button/MenuButton';
 import Icons from '../Icons/Icons';
 import { ThemeButton } from '../UI';
 
 import styles from './Header.module.css';
 
 /** static icons */
-const { Logo, GithubIcon, Menu } = Icons;
+const { Logo, GithubIcon } = Icons;
 /** static NAVRoutes */
-const { accountRoute, dashboardRoute, githubRoute, homeRoute } = NAV;
+const {
+  accountRoute,
+  dashboardRoute,
+  githubRoute,
+  homeRoute,
+} = NAV;
 
 export default function Header() {
-  const { showModal } = useModal();
-  const [show, setShow] = useState(false);
-
-  const handleToggleForm = () => {
-    setShow((prev) => !prev);
-    showModal((onClose) => (
-      <Form onClose={() => {
-        setShow(false);
-        onClose();
-      }}
-      />
-    ));
-  };
-
   return (
     <header className={styles.header}>
       <div className={styles.content}>
         <div className={styles.col1}>
-          <Link
-            className={styles.logo}
-            href={homeRoute.href}
-            title={homeRoute.name}
-            target={homeRoute.target}
-          >
-            <Logo
-              className={`${styles['logo-svg']} svg-1`}
-            />
-          </Link>
+          <NavLink props={homeRoute} className={styles.logo}>
+            <Logo className={`${styles['logo-svg']} svg-1`} />
+          </NavLink>
         </div>
 
         <div className={styles.col2}>
           <nav className={styles.nav}>
             <ul className={styles['nav-list']}>
               <li className={styles['nav-item']}>
-                <Link
-                  className={`${styles['nav-link']} link-1`}
-                  href={dashboardRoute.href}
-                  title={dashboardRoute.name}
-                  target={dashboardRoute.target}
-                >
-                  {dashboardRoute.name}
-                </Link>
+                <NavLink props={dashboardRoute} className={`${styles['nav-link']} link-1`} />
               </li>
               <li className={`${styles['nav-item']}`}>
-                <Link
-                  className={`${styles['nav-link']} link-1`}
-                  href={accountRoute.href}
-                  title={accountRoute.name}
-                  target={accountRoute.target}
-                >
-                  {accountRoute.name}
-                </Link>
+                <NavLink props={accountRoute} className={`${styles['nav-link']} link-1`} />
               </li>
             </ul>
           </nav>
@@ -77,34 +46,18 @@ export default function Header() {
 
         <div className={styles.col3}>
           <button
-            className={`${styles['log-in--btn']} btn-3`}
-            disabled={show}
+            className={`${styles['log-in--btn']} btn-primary2`}
             type='button'
-            onClick={handleToggleForm}
           >
             Log in
           </button>
 
-          <Link
-            className={`${styles['github-btn--header']} btn-icon1`}
-            href={githubRoute.href}
-            title={githubRoute.name}
-            target={githubRoute.target}
-          >
-            <GithubIcon className={'svg-3'} />
-          </Link>
+          <NavLink props={githubRoute} className={`${styles['github-btn--header']} btn-icon1`}>
+            <GithubIcon className='svg-4' />
+          </NavLink>
 
-          <ThemeButton className={`${styles['theme-btn--header']}`} svgClassName={'svg-4'} />
-
-          <button
-            className={`${styles['menu-btn--header']} btn-icon1`}
-            type='button'
-            onClick={() => {
-              console.log('menu');
-            }}
-          >
-            <Menu className={'svg-2'} />
-          </button>
+          <ThemeButton className={`${styles['theme-btn--header']}`} svgClassName='svg-5' />
+          <MenuButton className={`${styles['menu-btn--header']} btn-icon1`} />
         </div>
       </div>
     </header>

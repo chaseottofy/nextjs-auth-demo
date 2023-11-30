@@ -48,12 +48,10 @@ export interface RestProps {
   placeholder?: string;
 }
 
-export interface RegisterType {
-  (id: FormElementNames, options?: {
-    required?: boolean;
-    disabled?: boolean;
-  }): UseFormRegisterReturn;
-}
+export type RegisterType = (id: FormElementNames, options?: {
+  required?: boolean;
+  disabled?: boolean;
+}) => UseFormRegisterReturn;
 
 export interface HookFormInputProps extends RestProps {
   disabled?: boolean;

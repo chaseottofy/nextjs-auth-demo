@@ -1,0 +1,70 @@
+/* **************************** */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem 1rem 2rem;
+  margin: 0 auto;
+}
+
+.label-combo {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  flex-grow: 10;
+  padding-right: 1rem;
+}
+
+.label-combo span {
+  margin-bottom: .75rem;
+  color: var(--grey5) !important;
+  font-size: .775rem !important;
+  font-style: italic;
+  padding-left: .125rem;
+}
+
+.input-user {
+  width: 100%;
+  height: 2.25rem !important;
+  font-weight: 400;
+  background-color: var(--black5) !important;
+  position: relative;
+}
+
+.submit-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  flex-grow: 1;
+  width: auto;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.submit {
+  color: #d4d4d4 !important;
+  background-image: var(--linear-share2) !important;
+}
+
+.submit:not(:disabled) {
+  border-color: var(--secondary2-offset) !important;
+  background-image: var(--linear3) !important;
+}
+
+@media screen and (max-width: 440px) {
+  .form {
+    flex-direction: column;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .label-combo,
+  .submit-wrapper {
+    width: 100%;
+    flex-grow: 0;
+  }
+
+  .submit {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

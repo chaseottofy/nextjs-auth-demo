@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { User } from '@/lib/schema';
+import { SetStateType } from '@/models/interfaces';
 
 // import handleApi from '@/lib/fakeApi';
 // import { UserInterface } from '@/models/interfaces';
@@ -9,7 +8,7 @@ import fakeTimeout from './fakeTimeout';
 const onSubmitPostCheck = async (
   data: User,
   setEmailWarning: (value: { active: boolean; message: string; }) => void,
-  setUserAlreadyExists: React.Dispatch<React.SetStateAction<string[]>>,
+  setUserAlreadyExists: SetStateType<string[]>,
   isValid: boolean,
   isSubmitting: boolean,
 ) => {

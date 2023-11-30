@@ -1,6 +1,6 @@
 .wrapper {
   position: absolute;
-  z-index: 999;
+  z-index: 10000;
   display: flex;
   width: 4rem;
   height: 4rem;

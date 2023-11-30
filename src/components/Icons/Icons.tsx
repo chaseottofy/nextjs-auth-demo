@@ -10,8 +10,10 @@ import {
  *
  * Alert badge
  * Check
+ * Close
  * Logo
  * Error badge
+ * ExternalLink
  * Eye icon
  * Eye icon off
  * Github icon
@@ -58,6 +60,12 @@ const Icons: IconsInterface = {
       />
     </svg>
   ),
+  Close: (props?: IconProps) => (
+    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' {...props}>
+      <path d='M18 6 6 18' />
+      <path d='m6 6 12 12' />
+    </svg>
+  ),
   Logo: (props?: IconProps) => (
     <svg
       width='40px'
@@ -98,6 +106,24 @@ const Icons: IconsInterface = {
       <path d='M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86L7.86 2z' />
       <path d='M12 8v4' />
       <path d='M12 16h.01' />
+    </svg>
+  ),
+  ExternalLink: (props?: IconProps) => (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      {...props}
+    >
+      <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />
+      <polyline points='15 3 21 3 21 9' />
+      <line x1='10' x2='21' y1='14' y2='3' />
     </svg>
   ),
   EyeIcon: (props?: IconProps) => (
@@ -194,6 +220,29 @@ const Icons: IconsInterface = {
       />
     </svg>
   ),
+  GradientFill: (props?: IconProps) => (
+    <svg
+      {...props}
+      viewBox='0 0 100 100'
+    >
+      <filter
+        id='grainy2'
+        x='0'
+        y='0'
+        width='100%'
+        height='100%'
+      >
+        <feTurbulence
+          type='fractalNoise'
+          baseFrequency='0.8'
+          numOctaves='3'
+          seed='5'
+          stitchTiles='stitch'
+          result='turbulence'
+        />
+      </filter>
+    </svg>
+  ),
   Menu: (props?: IconProps) => (
     <svg
       fill='none'
@@ -243,6 +292,12 @@ const Icons: IconsInterface = {
       {...props}
     >
       <path d='M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z' />
+    </svg>
+  ),
+  Send: (props?: IconProps) => (
+    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' {...props}>
+      <path d='m3 3 3 9-3 9 19-9Z' />
+      <path d='M6 12h16' />
     </svg>
   ),
   Sun: (props?: IconProps) => (

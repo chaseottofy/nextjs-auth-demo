@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { authors, creator, icons, keywords } from './meta';
+import {
+  authors, creator, icons, keywords,
+} from './meta';
 
 import styles from './not-found/NotFound.module.css';
 

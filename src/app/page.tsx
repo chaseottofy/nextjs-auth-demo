@@ -1,11 +1,10 @@
-// 'use client';
-
 import * as React from 'react';
 import type { Metadata } from 'next';
 
 import Main from '@/components/Main/Main';
-import UserList from '@/components/Users/UserList';
+import UserDash from '@/components/Users/UsersDash';
 
+import { serverClient } from './_trpc/serverClient';
 import * as shared from './meta';
 
 export const metadata: Metadata = {
@@ -13,10 +12,12 @@ export const metadata: Metadata = {
   ...shared,
 };
 
-export default function Home() {
+export default async function Home() {
+  const users = await serverClient.getUsers();
+
   return (
     <Main>
-      <UserList />
+      <UserDash initialData={users} />
     </Main>
   );
 }

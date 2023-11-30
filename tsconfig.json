@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    // "allowJs": false,
+    // "checkJs": false,
     "baseUrl": "src/",
+    "declaration": true,
     "esModuleInterop": true,
+    "experimentalDecorators": false,
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -67,18 +70,26 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es6",
+    "allowJs": true
   },
   "exclude": [
     "node_modules",
-    "temp"
+    "temp",
+    "build",
+    "dist",
+    "coverage",
+    ".next"
   ],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
+    "src",
+    "src/**/*",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./src/app/**/*.ts",
-    "./src/app/**/*.tsx"
+    "./src/app/**/*.tsx",
+    "coverage-ts/**/*",
+    "temp/res/Form"
   ]
 }

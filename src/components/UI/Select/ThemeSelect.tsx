@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
 import * as React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import Icons from '@/components/Icons/Icons';
-import { THEMES } from '@/data/constants';
+import { MOBILE_BREAKPOINT, THEMES } from '@/data/constants';
+
 import { useClickOutside } from '@/hooks/index';
 import { mod } from '@/utils/index';
-
-import ThemeSelectItem from './ThemeSelectItem';
+import ListItem from '../List/ListItem';
 
 import styles from './ThemeSelect.module.css';
 
@@ -23,6 +23,17 @@ export default function ThemeSelect({
   const [activeItem, setActiveItem] = useState(theme ? THEMES.indexOf(theme) : 2);
   const modalRef = useClickOutside(onClick) as React.MutableRefObject<HTMLUListElement>;
 
+  const handleResize = useCallback(() => {
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+      onClick();
+    }
+  }, [onClick]);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [handleResize]);
+
   useEffect(() => modalRef.current?.focus(), [modalRef]);
 
   return (
@@ -38,11 +49,9 @@ export default function ThemeSelect({
       onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
         const { key } = e;
         e.preventDefault();
-        setActiveItem((prev) => {
-          return key === 'ArrowDown'
-            ? mod(prev + 1, 3)
-            : (key === 'ArrowUp' ? mod(prev - 1, 3) : prev);
-        });
+        setActiveItem((prev) => (key === 'ArrowDown'
+          ? mod(prev + 1, 3)
+          : (key === 'ArrowUp' ? mod(prev - 1, 3) : prev)));
 
         if (key === 'Enter' && setTheme) {
           setTheme(THEMES[activeItem]);
@@ -52,10 +61,10 @@ export default function ThemeSelect({
     >
       {
         THEMES.map((item, index) => (
-          <ThemeSelectItem
-            active={item === theme}
-            activeItem={activeItem === index}
-            index={index}
+          <ListItem
+            active={activeItem === index}
+            checkmark={item === theme}
+            id={`theme-select-item-${index}`}
             key={item}
             onClick={(e: React.MouseEvent<HTMLElement>) => {
               onClick(e);
@@ -65,7 +74,7 @@ export default function ThemeSelect({
           >
             {item}
             {item === theme && <Check className='svg-6' />}
-          </ThemeSelectItem>
+          </ListItem>
         ))
       }
     </ul>

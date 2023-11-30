@@ -132,10 +132,10 @@ template {
 }
 
 svg {
-  pointer-events: none;
-  user-select: none;
   min-width: .875rem;
   min-height: .875rem;
+  pointer-events: none;
+  user-select: none;
 }
 
 h1,
@@ -293,7 +293,7 @@ button:focus-visible,
 input:focus-visible,
 label:focus-visible,
 textarea:focus-visible {
-  outline: 1.5px dotted var(--grey5);
+  outline: 1.5px dotted var(--grey4);
 }
 
 input:-webkit-autofill,

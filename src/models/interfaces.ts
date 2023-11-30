@@ -1,7 +1,26 @@
-import type {
-  HTMLAttributes,
-  JSX,
-} from 'react';
+import type { HTMLAttributes, JSX } from 'react';
+
+/**
+ * @fileoverview Interfaces
+ * List:
+ * - FormElementNames
+ * - FormProps
+ * - GetUsersResponsePayload
+ * - IconsInterface
+ * - IconProps
+ * - Inputs
+ * - ModalContent
+ * - ModalContextProps
+ * - ModalProps
+ * - ModalProviderProps
+ * - NavLinkProps
+ * - RestUserProps
+ *   - UserInputProps
+ * - SetStateType
+ * - TimeoutId
+ * - UserInterface
+ * - Warning
+ */
 
 export type FormElementNames = 'email' | 'password' | 'remember';
 
@@ -9,16 +28,21 @@ export interface FormProps {
   onClose: () => void;
 }
 
-export interface IconsInterface {
-  [key: string]: (props?: IconProps) => JSX.Element;
+export interface GetUsersResponsePayload {
+  id: number;
+  content: string | null;
+  done: string | null;
 }
+
+export type IconsInterface = Record<string, (props?: IconProps) => JSX.Element>;
+
 export type IconProps = HTMLAttributes<SVGElement>;
 
-export type Inputs = {
+export interface Inputs {
   email: string;
   password: string;
   remember: boolean;
-};
+}
 
 export type ModalContent = (onClose: () => void) => React.ReactNode;
 
@@ -38,13 +62,32 @@ export interface ModalProviderProps {
   children: React.ReactNode;
 }
 
-export interface NavigationInterface {
-  [key: string]: {
-    name: string;
-    href: string;
-    external?: boolean;
-  };
+// export interface NavLinkProp = { name: string; href: string; target: string; };
+export interface NavLinkProp {
+  name: string;
+  href: string;
+  target: string;
 }
+
+export type NavLinkProps = Record<string, NavLinkProp>;
+
+export interface RestUserProps {
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  className?: string;
+  minLength?: number;
+  maxLength?: number;
+  placeholder?: string;
+}
+
+export interface UserInputProps extends RestUserProps {
+  type: 'text' | 'password' | 'email' | 'tel' | 'search' | 'url';
+  required: boolean;
+  id: string;
+  disabled: boolean;
+}
+
+export type SetStateType<T> = React.Dispatch<React.SetStateAction<T>>;
 
 export type TimeoutId = ReturnType<typeof setTimeout>;
 

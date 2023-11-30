@@ -8,44 +8,59 @@
 -------------------------------------------------------
 TOC (in order of appearance) :
 - Layout
+-------------------------------------------------------
 
 - Buttons
     * hover/active/focus are all configured to only apply
       if the button is not disabled. 
       This is to avoid having to use 'pointer-events: none'
 
+      - Project specific buttons
+-------------------------------------------------------
+
 - Form Elements
     * Input
     * Label
+-------------------------------------------------------
 
 - Links
+-------------------------------------------------------
 
 - SVG
+-------------------------------------------------------
 
 - Text
+-------------------------------------------------------
 
 - Flex
+-------------------------------------------------------
 
 - General Utilities
+-------------------------------------------------------
 
 - Transition Utilities
+-------------------------------------------------------
 
 - Popup Utilities
+-------------------------------------------------------
 
 - Custom Scrollbar
     * to enable a custom scrollbar, add the following attribute
       to the element   --   data-custom-scrollbar="true"
+-------------------------------------------------------
 
 - Handle No-Descending-Specificity (nested selectors)
     * When two selectors have the same specificity, the one
       that occurs last will take priority. If any conflicting
       definitions arise, handle them at the bottom of the file
       to avoid confusion.
+
+-------------------------------------------------------
+
 */
 
 /* LAYOUT
 =============================================== */
-
 .base {
   display: flex;
   width: 100%;
@@ -79,7 +94,7 @@ TOC (in order of appearance) :
 .btn-1 {
   padding: var(--p2) var(--p3);
   border: var(--border-primary1);
-  background-color: var(--primary1);
+  background-color: var(--secondary2);
   color: var(--white1);
   font-size: .875rem;
   font-weight: 500;
@@ -134,17 +149,17 @@ TOC (in order of appearance) :
 .btn-icon1 {
   width: 2.25rem;
   height: 2.25rem;
+  padding: 0;
+  /* border-radius: 0 !important; */
   color: var(--white1) !important;
   fill: var(--white1) !important;
-  border-radius: 0 !important;
-  padding: 0;
   line-height: normal;
 }
 
 .btn-icon1:disabled {
+  fill: var(--grey5) !important;
   pointer-events: none;
   user-select: none;
-  fill: var(--grey5) !important;
 }
 
 .btn-1:not(:disabled):hover,
@@ -169,8 +184,8 @@ TOC (in order of appearance) :
 
 .btn-2:not(:disabled):focus-visible,
 .btn-3:not(:disabled):focus-visible {
-  outline: 1.5px dotted var(--white1);
   color: var(--white2);
+  outline: 1.5px dotted var(--white1);
 }
 
 .btn-1:not(:disabled):active,
@@ -193,14 +208,52 @@ TOC (in order of appearance) :
   background-color: var(--secondary3) !important;
 }
 
+/* ALTERNATIVE BUTTONS (PROJECT SPECIFIC)
+====================================== */
+.btn-primary2 {
+  display: inline-flex;
+  overflow:hidden;
+  width: auto !important;
+  min-width: 4.5rem;
+  max-width: 140px !important;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 1px solid var(--secondary4);
+  border-radius: var(--br1);
+  background-image: var(--linear3);
+  background-position: 0 0 !important;
+  background-size: 120% 220% !important;
+  color: #d4d4d4 !important;
+  font-size: .775rem;
+  outline: 1px solid transparent;
+  transition-duration: 200ms;
+  transition-property: background-position, background-size, border-color;
+  transition-timing-function: var(--bez-3);
+  white-space: nowrap;
+}
+
+.btn-primary2:not(:disabled):hover {
+  border-color: var(--secondary1-offset) !important;
+  background-position: 100% 100% !important;
+  background-size: 120% 120% !important;
+  color: #fff !important;
+}
+
+.btn-primary2:not(:disabled):focus-visible {
+  border-color: var(--secondary1-offset) !important;
+  background-position: 50% 50% !important;
+  outline-color: var(--secondary1-offset3) !important;
+}
+
 /* FORM ELEMENTS
 ===================================== */
 .input-1 {
   width: 100%;
-
-  /* min-width: 100%; */
   max-width: 700px !important;
   height: 2.25rem;
+  border-color: var(--grey6);
   background-color: var(--black1);
   font-size: 0.8rem;
   outline: 2px solid transparent;
@@ -209,9 +262,12 @@ TOC (in order of appearance) :
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input-1:not(:disabled):hover,
+.input-1:not(:disabled):hover {
+  border-color: var(--grey8);
+}
+
 .input-1:not(:disabled):focus-visible {
-  outline: 2px solid var(--grey10);
+  outline: 2px solid var(--grey8);
 }
 
 /* .input-1:invalid, */
@@ -292,7 +348,7 @@ it short and sweet since it technically still affects layout.
   justify-content: center;
   border: var(--border1);
   border-color: var(--border-color2);
-  border-radius: 5px;
+  border-radius: var(--br1);
 
   /* checkbox check svg converted to data uri */
   background-image: url("data:image/svg+xml;base64,PHN2ZyBzdHJva2U9IndoaXRlIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgaGVpZ2h0PSIxZW0iIHdpZHRoPSIxZW0iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMiIgcG9pbnRzPSI2IDEzIDEwLjIgMTYuNiAxOCA3Ij48L3BvbHlsaW5lPjwvc3ZnPg==");
@@ -340,31 +396,31 @@ it short and sweet since it technically still affects layout.
 .link-2 {
   display: inline-flex;
   align-items: center;
-  border: 1px solid transparent;
-  color: var(--grey4);
-  font-size: .775rem;
-  padding: 0 .25rem;
-  background-color: transparent;
-  white-space: nowrap;
   justify-content: center;
+  padding: 0 .325rem;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--grey4);
   cursor: pointer;
+  font-size: .8rem;
+  white-space: nowrap;
 }
 
 .link-2 {
-  background-color: var(--black2);
   border-radius: var(--br1);
+  background-color: var(--black2);
 }
 
 .link-1[data-link-disabled="true"],
 .link-2[data-link-disabled="true"] {
-  pointer-events: none !important;
-  user-select: none !important;
   opacity: .6;
+  pointer-events: none;
+  user-select: none;
 }
 
 .link-1:not(:disabled):hover,
 .link-2:not(:disabled):hover {
-  color: var(--grey5) !important;
+  color: var(--grey5);
 }
 
 .link-1:not(:disabled):focus-visible,
@@ -397,16 +453,21 @@ it short and sweet since it technically still affects layout.
 }
 
 .svg-4 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.svg-5 {
   width: 1.25rem;
   height: 1.25rem;
 }
 
-.svg-5 {
+.svg-6 {
   width: 1rem;
   height: 1rem;
 }
 
-.svg-6 {
+.svg-7 {
   width: .875rem;
   height: .875rem;
 }
@@ -545,7 +606,7 @@ it short and sweet since it technically still affects layout.
 }
 
 [data-custom-scrollbar="true"]::-webkit-scrollbar-thumb {
-  min-height: 40px;
+  min-height: 80px;
   border: none;
   border-radius: var(--br1);
   background-color: var(--grey8);

@@ -9,15 +9,13 @@ import { trpc } from '@/app/_trpc/client';
 
 export default function TrpcProvider({ children }: { children: React.ReactNode; }) {
   const [queryClient] = useState(() => new QueryClient());
-  const [trpcClient] = useState(() => {
-    return trpc.createClient({
-      links: [
-        httpBatchLink({
-          url: 'http://localhost:3000/api/trpc',
-        }),
-      ],
-    });
-  });
+  const [trpcClient] = useState(() => trpc.createClient({
+    links: [
+      httpBatchLink({
+        url: 'http://localhost:3000/api/trpc',
+      }),
+    ],
+  }));
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>

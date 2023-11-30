@@ -12,3 +12,9 @@ stylelint.config.cjs
 temp
 test
 jest.config.ts
+
+prettier.config.js
+coverage-ts
+drizzle.config.ts
+.postcssrc.js
+tsconfig.json

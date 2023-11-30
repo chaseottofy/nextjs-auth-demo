@@ -12,9 +12,9 @@ function NextThemeProvider({
     <ThemeProvider
       themes={['dark', 'light']}
       storageKey='ot-theme'
-      disableTransitionOnChange={true}
-      enableColorScheme={true}
-      enableSystem={true}
+      disableTransitionOnChange
+      enableColorScheme
+      enableSystem
       defaultTheme='dark'
     >
       {children}

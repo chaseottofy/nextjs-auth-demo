@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
-interface CallbackType {
-  (e?: React.MouseEvent<HTMLElement>): void;
-}
-
-const useClickOutside = <T extends HTMLElement>(callback:CallbackType): React.RefObject<T> => {
+const useClickOutside = <T extends HTMLElement>(
+  callback: (e?: React.MouseEvent<HTMLElement>) => void,
+): React.RefObject<T> => {
   const ref = useRef<T>(null);
 
   useEffect(() => {
