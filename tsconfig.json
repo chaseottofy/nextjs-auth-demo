@@ -75,6 +75,7 @@
   },
   "exclude": [
     "node_modules",
+    "test",
     // "build",
     // "dist",
     // ".next",
@@ -83,13 +84,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-    // "next-env.d.ts",
-    // "src",
-    // "src/**/*",
-    // "**/*.tsx",
-    // ".next/types/**/*.ts",
-    // "./src/app/**/*.ts",
-    // "./src/app/**/*.tsx",
+    ".next/types/**/*.ts",
+    "./src/app/**/*.ts",
+    "./src/app/**/*.tsx",
   ]
 }

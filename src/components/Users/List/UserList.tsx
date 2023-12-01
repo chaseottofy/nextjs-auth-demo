@@ -7,7 +7,8 @@ import { useState } from 'react';
 import { SqliteError } from 'better-sqlite3';
 
 import { GetUsersResponsePayload } from '@/models/interfaces';
-import { getDateTime } from '@/utils/index';
+
+import DateLabel from '../../UI/Label/DateLabel';
 
 import styles from './UserList.module.css';
 
@@ -59,7 +60,7 @@ export default function UserList({
       data-custom-scrollbar
     // data-is-loading={resolvedScroll ? 'false' : 'true'}
     >
-      <span className={styles.datetime}>{getDateTime()}</span>
+      <DateLabel className={styles.datetime} />
       {/* {!resolvedScroll && (<CustomSkeleton className={styles.usersSkel} />)} */}
 
       {resolvedData?.map((user, index) => {

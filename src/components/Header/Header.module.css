@@ -10,7 +10,6 @@
   min-height: var(--header-height) !important;
   align-items: center;
   margin: 0 auto;
-
   /* backdrop-filter: saturate(180%) blur(5px); */
   background-color: rgba(15, 17, 18, .5);
 }
