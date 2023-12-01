@@ -3,15 +3,8 @@ import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 export const users = sqliteTable('users', {
   id: integer('id').primaryKey(),
   content: text('content'),
-  // completionAt: integer('completion_at', { mode: 'timestamp' }),
   done: integer('done'),
 });
-
-// export const users = sqliteTable('users', {
-//   id: integer('id').primaryKey(),
-//   email: text('email'),
-//   password: text('password'),
-// });
 
 /*
 const { email: maxEmail, password: maxPassword } = MAX_INPUT_LENGTHS;

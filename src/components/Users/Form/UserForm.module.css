@@ -15,34 +15,34 @@
 }
 
 .label-combo span {
+  padding-left: .125rem;
   margin-bottom: .75rem;
   color: var(--grey5) !important;
   font-size: .775rem !important;
   font-style: italic;
-  padding-left: .125rem;
 }
 
 .input-user {
+  position: relative;
   width: 100%;
   height: 2.25rem !important;
-  font-weight: 400;
   background-color: var(--black5) !important;
-  position: relative;
+  font-weight: 400;
 }
 
 .submit-wrapper {
-  margin-top: 1rem;
   display: flex;
-  flex-grow: 1;
   width: auto;
+  flex-grow: 1;
   align-items: flex-end;
   justify-content: center;
   padding-right: 1rem;
+  margin-top: 1rem;
 }
 
 .submit {
-  color: #d4d4d4 !important;
   background-image: var(--linear-share2) !important;
+  color: #d4d4d4 !important;
 }
 
 .submit:not(:disabled) {

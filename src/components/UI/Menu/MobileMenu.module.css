@@ -2,19 +2,18 @@
   position: absolute;
   z-index: var(--z-toast);
   top: calc(var(--header-height) + .5rem);
-  overflow-x: hidden;
-  overflow-y: scroll;
   right: .5rem;
-  max-width: calc(100% - 1rem);
+  overflow: hidden scroll;
   width: 100%;
-  align-items: flex-end;
+  max-width: calc(100% - 1rem);
   height: calc(100vh - var(--header-height) - 1rem);
   flex-direction: column;
+  align-items: flex-end;
   padding: .5rem 0 .5rem .5rem;
   border: 1px solid var(--grey9);
   border-radius: var(--br2);
-  background-color: var(--offsetblack0);
   backdrop-filter: blur(10px);
+  background-color: var(--offsetblack0);
   box-shadow: var(--bs1);
 }
 
@@ -28,9 +27,9 @@
 
 .container li a {
   width: 100% !important;
-  justify-content: flex-end;
-  align-items: center !important;
   height: 100% !important;
+  align-items: center !important;
+  justify-content: flex-end;
   padding: .75rem .5rem !important;
 }
 

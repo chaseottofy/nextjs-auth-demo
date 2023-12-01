@@ -13,14 +13,63 @@ const db = drizzle(sqlite);
 
 migrate(db, { migrationsFolder: 'drizzle' });
 
+// interface User {
+//   id: number;
+//   content: string;
+//   done: number;
+// }
+
+// type AddUserInput = string;
+
+// interface SetDoneInput {
+//   id: number;
+//   done: number;
+// }
+
+// type ClearSomeInput = number;
+
+// export interface AppRouterInterface {
+//   // getUsers: () => BuildProcedure<'query', any, User[]>;
+//   // getUsers: () => Promise<User[]> | User[];
+//   // getUsers: () => Promise<User[]>;
+//   getUsers: () => User[];
+//   addUser: (input: string) => Promise<boolean>;
+//   setDone: (input: {
+//     id: number;
+//     done: number;
+//   }) => Promise<boolean>;
+//   clearSome: (input: number) => Promise<number>;
+// }
+
 const appRouter = router({
+  // getUsers: () => publicProcedure
+  //   .query(() => {
+  //     const res = db.select().from(users).all();
+  //     return res || [];
+  //   }),
   getUsers: publicProcedure
     .query(() => {
       const res = db.select().from(users).all();
       return res || [];
+      // if (res) {
+      //   return res;
+      // }
+      // return [{
+      //   id: 0,
+      //   content: 'default',
+      //   done: 0,
+      // }];
+      // return res || [
+      //   {
+      //     id: 0,
+      //     content: 'default',
+      //     done: 0,
+      //   },
+      // ] as User[];
     }),
   addUser: publicProcedure
-    .input(z.string()).mutation(async (opts) => {
+    .input(z.string())
+    .mutation(async (opts) => {
       if (opts.input === 'error') {
         throw new SqliteError('error', 'error');
       }
@@ -42,19 +91,17 @@ const appRouter = router({
         .where(eq(users.id, id));
       return true;
     }),
-  clearDb: publicProcedure
-    .mutation(async () => {
-      await db.delete(users);
-    }),
   clearSome: publicProcedure
     .input(z.number())
     .mutation(async (opts) => {
       const id = opts.input;
-      await db.delete(users).where(eq(users.id, id));
+      await db
+        .delete(users)
+        .where(eq(users.id, id));
       return id;
     }),
 });
 
-export type AppRouter = typeof appRouter;
-
 export { appRouter };
+
+export type AppRouter = typeof appRouter;

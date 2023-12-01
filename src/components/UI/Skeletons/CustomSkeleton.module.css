@@ -1,12 +1,12 @@
 .custom-skeleton {
   position: relative;
+  z-index: 1000;
   animation: skeleton-loading 6s ease-in-out infinite;
   background-image: linear-gradient(90deg, var(--black1) 0%, var(--black2) 50%, var(--black1) 100%) !important;
   background-size: 400% 100%;
   color: transparent !important;
   pointer-events: none;
   user-select: none;
-  z-index: 1000;
 }
 
 .custom-skeleton[data-is-transparent="true"] {

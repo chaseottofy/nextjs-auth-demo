@@ -13,15 +13,16 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+
   /* background-color: transparent; */
   outline: none;
 }
 
 .modal[data-modal-unset='true'] {
-  height: auto !important;
   width: auto !important;
   max-width: fit-content !important;
+  height: auto !important;
   max-height: fit-content !important;
-  inset: unset !important;
   margin: unset !important;
+  inset: unset !important;
 }

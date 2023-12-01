@@ -30,22 +30,21 @@
   "scripts": {
     "api": "json-server api/db.json --port 4001",
     "build": "next build",
-    "preview": "next start",
+    "cov": "typescript-coverage-report",
+    "dep": "npx depcheck",
     "dev": "next dev",
     "drop:drizzle": "npx drizzle-kit drop:sqlite",
-    "dep": "npx depcheck",
+    "gen": "drizzle-kit generate:sqlite",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "preview": "next start",
     "sort": "npx sort-package-json",
     "start": "next start",
-    "test": "jest",
-    "cov": "typescript-coverage-report",
-    "gen": "drizzle-kit generate:sqlite",
     "stylelint": "stylelint \"src/**/*.css\"",
-    "stylelint:fix": "stylelint \"src/**/*.css\" --fix"
+    "stylelint:fix": "stylelint \"src/**/*.css\" --fix",
+    "test": "jest"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.3.2",
     "@tanstack/react-query": "^4.36.1",
     "@trpc/client": "^10.43.3",
     "@trpc/react-query": "^10.43.3",
@@ -59,7 +58,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
-    "sharp": "^0.32.6",
     "zod": "^3.22.4"
   },
   "devDependencies": {
