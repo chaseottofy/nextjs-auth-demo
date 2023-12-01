@@ -1,4 +1,3 @@
-export { default as determineInputAlertProps } from '../../temp/res/buildInputAlert';
 export { default as fakeTimeout } from './fakeTimeout';
 export { default as getDateTime } from './getDateTime';
 export { default as handleKeyDownPassword } from './handleKeyDownPassword';
